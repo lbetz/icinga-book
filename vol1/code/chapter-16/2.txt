@@ -1,0 +1,18 @@
+var hosts = 2000
+var services = 20
+
+while (hosts > 0) {
+  object Host "localhost "+hosts {
+    import "generic-host"
+    check_command = "dummy"
+  }
+  hosts -= 1
+}
+while (services > 0) {
+  apply Service "dummy "+services {
+    import "generic-service"
+    check_command = "dummy"
+    assign where match("localhost*", host.name)
+  }
+  services -= 1
+}

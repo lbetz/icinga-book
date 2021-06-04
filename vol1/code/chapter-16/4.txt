@@ -1,0 +1,23 @@
+[ ca ]
+default_ca              = CA_default
+
+[ CA_default ]
+dir                     = /var/lib/icinga2/ca
+database                = $dir/index.txt
+certificate             = $dir/ca.crt
+private_key             = $dir/ca.key
+default_crl_days        = 30
+# default_crl_hours       = 1
+default_md              = md5
+policy                  = policy_any
+name_opt                = ca_default
+cert_opt                = ca_default
+copy_extensions         = none
+
+[ policy_any ]
+countryName             = supplied
+stateOrProvinceName     = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional

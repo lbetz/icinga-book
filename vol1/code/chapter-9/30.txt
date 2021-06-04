@@ -1,0 +1,10 @@
+object Service "amavis" {
+  import "generic-service"
+  host_name = "kmw.gwc-jonas.net"
+
+  check_command = "smtp"
+  command_endpoint = "kmw.gwc-jonas.net"
+
+  vars.smtp_address = "127.0.0.1"
+  vars.smtp_port = 10024
+}

@@ -1,0 +1,14 @@
+globals.vbs_prefix = function(prefix, pmacro) {
+  return function() use (prefix, pmacro) {
+    var values = macro(pmacro)
+    if (typeof(values) == Array) {
+      var result = []
+      for (value  in values) {
+        result += [ prefix + value ]
+      }
+      return result
+    } else {
+      return [ prefix + values ]
+    }
+  }
+}

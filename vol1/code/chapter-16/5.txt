@@ -1,0 +1,6 @@
+object ApiListener "api" {
+  accept_commands = true
+  accept_config = false
+  ticket_salt = TicketSalt
+  crl_path = "/var/lib/icinga2/certs/ca.crl"
+}

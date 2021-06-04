@@ -1,0 +1,8 @@
+object Service "dns forwarder" {
+  import "generic-service"
+
+  host_name = "draco.gwc-jonas.local"
+  check_command = "dig"
+
+  vars.dig_lookup = "www.google.de"
+}

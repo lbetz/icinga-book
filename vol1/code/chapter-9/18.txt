@@ -1,0 +1,4 @@
+template Host "apache-webserver" {
+  vars.apache_status_warning = "20:,,"
+  vars.apache_status_critical = "10:,,"
+}

@@ -1,0 +1,11 @@
+apply Service for (mode => config in host.vars.oracle_health) {
+  import "generic-service"
+
+  check_command = "oracle_health"
+  display_name = mode.replace("-", " ")
+
+  vars.oracle_health_mode = mode
+  vars += config
+
+  ignore where typeof(config) != Dictionary
+}

@@ -1,0 +1,5 @@
+Host *
+  StrictHostKeyChecking no
+  ControlPath ~nagios/.ssh/controlmasters/%r@%h:%p.socket
+  ControlMaster auto
+  ControlPersist 5m

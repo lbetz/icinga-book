@@ -1,0 +1,18 @@
+object Service "imaps" {
+  import "generic-service"
+  host_name = "gmw.gwc-jonas.local"
+
+  check_command = "simap"
+
+  vars.simap_port = "993"
+}
+
+object Service "imaps cert" {
+  import "generic-service"
+  host_name = "gmw.gwc-jonas.local"
+
+  check_command = "simap"
+
+  vars.simap_certificate_age = 10
+  vars.simap_port = "993"
+}

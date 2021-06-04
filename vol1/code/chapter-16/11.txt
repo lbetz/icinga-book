@@ -1,0 +1,15 @@
+Listen 443
+<VirtualHost _default_:443>
+  SSLEngine on
+  SSLCertificateFile      path/to/server.pem
+  SSLCertificateKeyFile   path/to/server.key
+  SSLCACertificateFile    path/to/ca-bundle.crt
+
+  DocumentRoot "/var/www/html"
+
+  <Directory "/var/www/html">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Require all granted
+  </Directory>
+</VirtualHost>

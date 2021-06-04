@@ -1,0 +1,14 @@
+object Endpoint "sculptor.gwc-jonas.net" {
+}
+
+object Endpoint "fornax.gwc-jonas.local" {
+  host = "172.16.1.11"
+}
+
+object Zone "main" {
+  endpoints = [ "fornax.gwc-jonas.local" ]
+}
+object Zone "dmz" {
+  endpoints = [ "sculptor.gwc-jonas.net" ]
+  parent = "main"
+}

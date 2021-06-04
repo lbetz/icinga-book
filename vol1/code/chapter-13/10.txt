@@ -1,0 +1,10 @@
+apply Dependency "disable-ssh-checks" to Service {
+  parent_host_name = host.name
+  parent_service_name = "ssh"
+
+  states = [ OK ]
+  disable_checks = true
+  disable_notifications = true
+
+  assign where match("by_ssh_*", service.check_command)
+}

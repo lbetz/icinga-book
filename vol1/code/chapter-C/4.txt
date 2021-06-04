@@ -1,0 +1,13 @@
+object CheckCommand "my/vbs-local-ad" {
+  import "my/vbs-local"
+
+  vars.vbs_script = "check_ad.vbs"
+
+  arguments = {
+    "-t" = {
+      value = vbs_prefix("/test:", "$ad_test$")
+      repeat_key = true
+      skip_key = true
+    }
+  }
+}

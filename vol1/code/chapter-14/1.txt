@@ -1,0 +1,7 @@
+# Title           : Infrastructure
+# Owner           : icingaadmin
+# AddToMenu       : yes
+# Statetype       : soft
+
+internet-connection = internet 1;Hoststatus | internet 2;Hoststatus
+display 1;internet-connection;Internet Connection

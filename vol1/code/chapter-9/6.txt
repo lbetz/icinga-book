@@ -1,0 +1,7 @@
+apply Service "ntp peers" {
+  import "generic-service"
+
+  check_command = "ntp_peer"
+
+  assign where host.vars.os == "Linux" && (host.vars.ntp_address == host.address || host.vars.ntp_address == host.address6)
+}

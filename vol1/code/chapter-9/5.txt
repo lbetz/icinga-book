@@ -1,0 +1,19 @@
+object CheckCommand "my/hostalive" {
+  import "ipv4-or-ipv6"
+
+  command = [ PluginDir + "/check_ping" ]
+
+  arguments = {
+    "-H" = "$hostalive_address$"
+    "-w" = "$hostalive_wrta$,$hostalive_wpl$%"
+    "-c" = "$hostalive_crta$,$hostalive_cpl$%"
+    "-p" = "$hostalive_packets$"
+    "-t" = "$hostalive_timeout$"
+  }
+
+  vars.hostalive_address = "$check_address$"
+  vars.hostalive_wrta = 3000
+  vars.hostalive_wpl = 80
+  vars.hostalive_crta = 5000
+  vars.hostalive_cpl = 100
+}

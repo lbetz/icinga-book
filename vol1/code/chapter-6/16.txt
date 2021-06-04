@@ -1,0 +1,15 @@
+object CheckCommand "by_ssh_load" {
+  import "load"
+  vars.by_ssh_arguments = arguments
+  arguments = null
+  vars.by_ssh_command = PluginDir + "/check_load"
+  import "by_ssh_base"
+}
+
+apply Service "load" {
+  import "generic-service"
+
+  check_command = "by_ssh_load"
+
+  assign where !get_object("Endpoint", host.name) && (host.vars.os == "Linux" || host.vars.os == "Solaris")
+}

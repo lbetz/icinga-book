@@ -1,0 +1,3 @@
+apply Dependency for (parent in host.vars.parents) to Host {
+  parent_host_name = parent
+}

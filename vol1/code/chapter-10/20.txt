@@ -1,0 +1,15 @@
+object CheckCommand "tnsping" {
+  import "oracle_health"
+
+  vars.oracle_tns_admin = "/etc/icinga2"
+
+  vars.oracle_health_connect = {{
+    return macro("$host.name$").upper()
+  }}
+  vars.oracle_health_mode = "tnsping"
+  vars.oracle_health_warning = "$tnsping_warning$"
+  vars.oracle_health_critical = "$tnsping_critical$"
+
+  vars.tnsping_warning = 1
+  vars.tnsping_critical = 5
+}

@@ -1,0 +1,11 @@
+object Service "mx icinga-jonas.net" {
+  import "generic-service"
+  host_name = "kmw.gwc-jonas.net"
+
+  check_command = "dig"
+
+  vars.dig_server = "172.16.2.254"
+  vars.dig_lookup = "gwc-jonas.net"
+  vars.dig_record_type = "mx"
+  vars.dig_expected_address = "kmw.gwc-jonas.net"
+}

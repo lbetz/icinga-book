@@ -1,0 +1,14 @@
+object Host NodeName {
+  import "linux-host"
+  import "lan-net"
+  import "apache-webserver"
+
+  check_command = "my/hostalive"
+  address = "127.0.0.1"
+
+  vars.http_vhosts["Icinga Web 2"] = {
+    http_uri = "/icingaweb2"
+    http_warn_time = 1
+    http_crit_time = 2
+  }
+}

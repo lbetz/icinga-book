@@ -1,0 +1,10 @@
+template CheckCommand "my/vbs-local" {
+  import "ipv4-or-ipv6"
+  command = [
+    "c:/windows/system32/cscript.exe",
+    "//T:$vbs_timeout$",
+    "//NoLogo",
+    PrefixDir + "/sbin/$vbs_script$"
+  ]
+  vars.vbs_timeout = 30
+}

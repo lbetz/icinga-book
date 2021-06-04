@@ -1,0 +1,67 @@
+template Host "exchange-transport" {
+  import "exchange-common"
+
+  vars.services["Exchange Transport Services"] = {
+    IcingaCheckService_Array_Service = [
+        "MSExchangeEdgeSync",
+        "MSExchangeTransport",
+        "MSExchangeTransportLogSearch" ]
+  }
+
+  vars.counter["Total Active Mailbox Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Active Mailbox Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 250
+  }
+
+  vars.counter["Total Active Non-Smtp Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Active Non-Smtp Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 250
+  }
+
+  vars.counter["Total Active Remote Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\External Active Remote Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 250
+  }
+
+  vars.counter["Total Aggregate Delivery Queue \
+    (all external queues)"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\External Aggregate Delivery Queue Length (All External Queues)" ]
+    IcingaCheckPerfcounter_Object_Warning = 3000
+    IcingaCheckPerfcounter_Object_Critical = 5000
+  }
+
+  vars.counter["Total Largest Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\External Largest Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 200
+  }
+
+  vars.counter["Total Poison Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Poison Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 1
+  }
+
+  vars.counter["Total Retry Mailbox Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Retry Mailbox Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 100
+  }
+
+  vars.counter["Total Retry Non-Smtp Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Retry Non-Smtp Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 100
+  }
+
+  vars.counter["Total Retry Remote Delivery Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\External Retry Remote Delivery Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 100
+  }
+
+  vars.counter["Total Submission Queue"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Submission Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 100
+  }
+
+  vars.counter["Total Unreachable Queue Length"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchangeTransport Queues(_total)\\Unreachable Queue Length" ]
+    IcingaCheckPerfcounter_Object_Critical = 100
+  }
+}

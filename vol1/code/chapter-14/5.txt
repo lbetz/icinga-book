@@ -1,0 +1,6 @@
+# Title           : Websites
+# AddToMenu       : yes
+# Statetype       : soft
+
+shop = shop-website & cash-website & @infrastructure:send-mails
+display 1;shop;Shop

@@ -1,0 +1,11 @@
+apply Service for (disk => config in host.vars.disks) {
+  import "generic-service"
+
+  check_command = "disk"
+  command_endpoint = host.name
+
+  vars += config
+
+  assign where get_object("Endpoint", host.name) && host.vars.os == "Linux"
+  ignore where typeof(config) != Dictionary
+}

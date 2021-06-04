@@ -1,0 +1,18 @@
+object Endpoint "kmw.gwc-jonas.net" {
+  host = "172.16.2.13"
+}
+
+object Zone "kmw.gwc-jonas.net" {
+  endpoints = [ "kmw.gwc-jonas.net" ]
+  parent = "main"
+}
+
+object Host "kmw.gwc-jonas.net" {
+  import "linux-host"
+  import "dmz-net"
+
+  display_name = "kmw"
+  address = "172.16.2.13"
+
+  vars.clamd_address = "/var/run/clamd.amavisd/clamd.sock"
+}

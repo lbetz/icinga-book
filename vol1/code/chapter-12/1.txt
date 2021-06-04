@@ -1,0 +1,10 @@
+[Windows Incidents]
+title = "Windows Incidents"
+
+[Windows Incidents.Host Problems]
+url = "monitoring/list/hosts?_host_os=windows&host_state!=ok&modifyFilter=1"
+title = "Host Problems"
+
+[Windows Incidents.Service Problems]
+url = "monitoring/list/services?_host_os=windows&host_state=ok&service_state!=ok&modifyFilter=1"
+title = "Service Problems"

@@ -1,0 +1,7 @@
+template Host "lan-net" {
+  vars.ntp_address = "172.16.1.254"
+}
+
+template Host "dmz-net" {
+  vars.ntp_address = "172.16.2.254"
+}

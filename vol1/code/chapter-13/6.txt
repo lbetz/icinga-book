@@ -1,0 +1,6 @@
+object Dependency "webserver-router" {
+  parent_host_name = "draco.gwc-jonas.local"
+  child_host_name = "antlia.gwc-jonas.net"
+  states = [ Up ]
+  disable_checks = true
+}

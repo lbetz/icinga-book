@@ -1,0 +1,24 @@
+object CheckCommand "my/ps-local-dns" {
+  import "my/ps-local"
+  import "ipv4-or-ipv6"
+
+  vars.ps_script = "check_dns_lookup.ps1"
+
+
+  arguments = {
+    "--server" = {
+      value = "$dns_server$"
+      order = 1
+      skip_key = true
+      required = true
+    }
+    "--hostname" = {
+      value = "$dns_lookup$"
+      order = 2
+      skip_key = true
+      required = true
+    }
+  }
+
+  vars.dns_lookup = "$host.name$"
+}
