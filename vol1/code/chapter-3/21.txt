@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$2" == "--fqdn" ]; then
   HOSTNAME=$(hostname --fqdn) || exit 3
