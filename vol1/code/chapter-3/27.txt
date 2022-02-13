@@ -1,7 +1,6 @@
-object Host "carina.gwc-jonas.local" {
-  import "generic-host"
-
-  display_name = "carina"
-  address = "172.16.1.12"
-  check_period = "9to5"
+template Service "generic-service" {
+  max_check_attempts = 5
+  check_interval = 1m
+  retry_interval = 30s
+  check_period = host.check_period
 }

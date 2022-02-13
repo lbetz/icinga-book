@@ -1,8 +1,6 @@
-apply Service "hostname" {
-  import "generic-service"
+template Host "linux-host" {
+  import "generic-host"
 
-  check_command = "hostname"
-
-  //assign where host.vars.os == "Linux"
-  assign where host.name == NodeName
+  vars.os = "Linux"
+  vars.hostname_fqdn = true
 }

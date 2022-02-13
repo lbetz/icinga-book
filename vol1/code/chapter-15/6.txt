@@ -13,3 +13,15 @@ object Zone "dmz" {
   endpoints = [ "sculptor.gwc-jonas.net" ]
   parent = ZoneName
 }
+
+object Zone "global-templates" { 
+  global = true
+}
+
+object Zone "linux-commands" {
+  global = true
+}
+
+object Zone "windows-commands" { 
+  global = true
+}

@@ -1,13 +1,20 @@
-#!/bin/bash
+/*
+ * Check Commands
+ */
+object CheckCommand "hostname" {
+  command = [ MyPluginDir + "/check_hostname" ]
 
-if [ "$2" == "--fqdn" ]; then
-  HOSTNAME=$(hostname --fqdn) || exit 3
-else
-  HOSTNAME=$(hostname --short) || exit 3
-fi
+  arguments = {
+    "--match" = {
+      value = "$hostname_match$"
+      skip_key = true
+      order = 1
+    }
+    "--fqdn" = {
+      set_if = "$hostname_fqdn$"
+      order = 2
+    }
+  }
 
-if [ $HOSTNAME == $1 ]; then
-  echo "OK: hostname matches $1" && exit 0
-else
-  echo "WARNING: hostname does not match $1" && exit 1
-fi
+  vars.hostname_match = "$host.name$"
+}

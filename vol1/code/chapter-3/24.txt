@@ -1,6 +1,0 @@
-template Host "linux-host" {
-  import "generic-host"
-
-  vars.os = "Linux"
-  vars.hostname_fqdn = true
-}

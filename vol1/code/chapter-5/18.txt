@@ -1,8 +1,14 @@
-apply Service "icinga" {
-  import "generic-service"
+object Endpoint "andromeda.gwc-jonas.local" {
+}
 
-  check_command = "icinga"
-  command_endpoint = host.name
+object Zone "andromeda.gwc-jonas.local" {
+  endpoints = [ "andromeda.gwc-jonas.local" ]
+  parent = "main"
+}
 
-  assign where get_object("Endpoint", host.name) && (host.vars.os == "Linux" || host.vars.os == "Windows")
+object Host "andromeda.gwc-jonas.local" {
+  import "windows-host"
+
+  display_name = "andromeda"
+  address = "172.16.1.20"
 }

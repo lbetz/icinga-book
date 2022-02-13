@@ -1,20 +1,8 @@
-/*
- * Check Commands
- */
-object CheckCommand "hostname" {
-  command = [ MyPluginDir + "/check_hostname" ]
+apply Service "hostname" {
+  import "generic-service"
 
-  arguments = {
-    "--match" = {
-      value = "$hostname_match$"
-      skip_key = true
-      order = 1
-    }
-    "--fqdn" = {
-      set_if = "$hostname_fqdn$"
-      order = 2
-    }
-  }
+  check_command = "hostname"
 
-  vars.hostname_match = "$host.name$"
+  //assign where host.vars.os == "Linux"
+  assign where host.name == NodeName
 }

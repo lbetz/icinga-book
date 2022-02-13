@@ -1,10 +1,7 @@
-object TimePeriod "9to5" {
-  display_name = "Icinga 2 9to5 TimePeriod"
-  ranges = {
-    "monday" 	= "09:00-17:00"
-    "tuesday" 	= "09:00-17:00"
-    "wednesday" = "09:00-17:00"
-    "thursday" 	= "09:00-17:00"
-    "friday" 	= "09:00-17:00"
-  }
+object Host "carina.gwc-jonas.local" {
+  import "generic-host"
+
+  display_name = "carina"
+  address = "172.16.1.12"
+  check_period = "9to5"
 }
