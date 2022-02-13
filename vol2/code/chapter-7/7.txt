@@ -1,0 +1,9 @@
+apply Service "logstash" {
+  import "generic-service"
+  check_command = "procs"
+
+  vars.procs_argument = "logstash"
+  vars.procs_critical = "1:2"
+
+  assign where "logstash" in host.templates
+}
