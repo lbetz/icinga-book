@@ -1,0 +1,8 @@
+[ad-ldap]
+type = "ldap"
+hostname = "ldap://andromeda.gwc-jonas.local"
+port = "3268"
+encryption = "starttls"
+root_dn = "DC=gwc-jonas,DC=local"
+bind_dn = "icinga2ro@gwc-jonas.local"
+bind_pw = "changeme

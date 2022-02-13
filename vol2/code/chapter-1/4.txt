@@ -1,0 +1,7 @@
+[ad-auth]
+resource = "ad-ldap"
+backend = "msldap"
+
+[mysql-auth]
+backend = "db"
+resource = "mysql-icingaweb2"
