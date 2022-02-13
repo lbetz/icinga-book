@@ -1,0 +1,53 @@
+template Host "esx-host" {
+  import "generic-host"
+
+  vars.os = "esx"
+
+  vars.vmware["vSphere SOAP"] = {
+    check_command = "vmware-esx-soap-host-check"
+  }
+
+  vars.vmware["ESXi health"] = {
+    check_command = "vmware-esx-soap-host-runtime-health"
+    vmware_ignoreunknown = true
+  }
+
+  vars.vmware["CPU usage"] = {
+    check_command = "vmware-esx-soap-host-cpu-usage"
+  }
+
+  vars.vmware["Memory usage"] = {
+    check_command = "vmware-esx-soap-host-mem-usage"
+  }
+
+  vars.vmware["Volumes"] = {
+    check_command = "vmware-esx-soap-host-volumes"
+    vmware_ignoreunknown = true
+    vmware_multiline = true
+    vmware_gigabyte = true
+    vmware_usedspace = true
+  }
+
+  vars.vmware["interfaces"] = {
+    check_command = "vmware-esx-soap-host-net"
+  }
+
+  vars.vmware["vSphere NIC"] = {
+    check_command = "vmware-esx-soap-host-net-nic"
+  }
+
+  vars.vmware["Storage LUN"] = {
+    check_command = "vmware-esx-soap-host-storage-lun"
+    vmware_alertonly = true
+  }
+
+  vars.vmware["Storage Multipath"] = {
+    check_command = "vmware-esx-soap-host-storage-path"
+    vmware_alertonly = true
+  }
+
+  vars.vmware["Mounted Media"] = {
+    check_command = "vmware-esx-soap-host-media"
+    vmware_multiline = true
+  }
+}

@@ -1,0 +1,10 @@
+apply Service "updates" {
+  import "generic-service"
+  check_command = "pve"
+  check_interval = 24h
+  retry_interval = 10m
+  max_check_attempts = 2
+  vars.pve_mode = "updates"
+
+  assign where host.vars.os = "pve"
+}

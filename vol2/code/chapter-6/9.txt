@@ -1,0 +1,10 @@
+object Host "triangulum.gwc-jonas.local" {
+  import "generic-host"
+
+  display_name = "triangulum"
+  address = "172.16.1.19"
+
+  vars.vmware["vSphere SOAP"] = {
+    check_command = "vmware-esx-soap-host-check"
+  }
+}

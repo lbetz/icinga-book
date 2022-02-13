@@ -1,0 +1,5 @@
+template Host "vcenter-access" {
+  vars.vmware_datacenter = "172.16.1.98"
+  vars.vmware_username = "administrator@gwc-jonas.local"
+  vars.vmware_password = "changeme"
+}

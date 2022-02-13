@@ -1,0 +1,7 @@
+apply Service for (service => config in host.vars.vmware) {
+  import "generic-service"
+
+  check_command = config.check_command
+
+  vars += config
+}
