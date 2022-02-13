@@ -1,0 +1,19 @@
+template Host "windows-host-snmp" {
+  import "generic-service"
+
+  vars.manubulon["cpu usage"] = {
+    snmp_command = "snmp-load"
+    snmp_warn = 80
+    snmp_crit = 90
+  }
+
+  vars.manubulon["memory"] = {
+    snmp_command = "snmp-storage"
+    snmp_storage_name = "Memory"
+  }
+
+  vars.manubulon["disk C"] = {
+    snmp_command = "snmp-storage"
+    snmp_storage_name = "ˆC"
+  }
+}
