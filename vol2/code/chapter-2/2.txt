@@ -1,0 +1,45 @@
+Alias /pnp4nagios "/usr/local/pnp4nagios/share"
+
+<Directory "/usr/local/pnp4nagios/share">
+  <IfModule mod_authz_core.c>
+    # Apache 2.4
+    <RequireAll>
+      Require all granted
+    </RequireAll>
+  </IfModule>
+
+  <IfModule !mod_authz_core.c>
+    # Apache 2.2
+    Order allow,deny
+    Allow from all
+  </IfModule>
+
+  AllowOverride None
+
+  <IfModule mod_rewrite.c>
+    # Turn on URL rewriting
+    RewriteEngine On
+    Options symLinksIfOwnerMatch
+    # Installation directory
+    RewriteBase @BASE_URL@/
+    # Protect application and system files from being viewed
+    RewriteRule "^(?:application|modules|system)/" - [F]
+    # Allow any files or directories that exist to be displayed directly
+    RewriteCond "%{REQUEST_FILENAME}" !-f
+    RewriteCond "%{REQUEST_FILENAME}" !-d
+    # Rewrite all other URLs to index.php/URL
+    RewriteRule "^.*$" "index.php/$0" [PT]
+  </IfModule>
+
+  <IfModule !mod_rewrite.c>
+    DirectoryIndex error_norewrite.html
+    ErrorDocument 404 /icingaweb2/error_norewrite.html
+  </IfModule>
+
+  <IfModule mod_proxy_fcgi.c>
+    <FilesMatch "\.php$">
+      SetHandler "proxy:fcgi://127.0.0.1:9000"
+      ErrorDocument 503 /icingaweb2/error_unavailable.html
+    </FilesMatch>
+  </IfModule>
+</Directory>

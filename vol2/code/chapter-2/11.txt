@@ -1,0 +1,2 @@
+GRAPHITE_STORAGE_DIR="/var/lib/graphite"
+GRAPHITE_STORAGE_CONF="/etc/carbon"

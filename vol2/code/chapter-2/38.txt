@@ -1,0 +1,8 @@
+object Service "carbon-cache tcp/2003" {
+  import "generic-service"
+  host_name = "fornax.gwc-jonas.local"
+
+  check_command = "tcp"
+  
+  vars.tcp_port = 2003
+}

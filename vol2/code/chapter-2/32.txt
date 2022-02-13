@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+  WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120 user=_graphite group=_graphite
+  WSGIProcessGroup graphite
+  WSGIApplicationGroup %{GLOBAL}
+  WSGIImportScript /opt/graphite/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
+  WSGIScriptAlias / /opt/graphite/conf/graphite.wsgi
+
+  Alias /static/ /opt/graphite/webapp/content/
+  <Location "/static/">
+    SetHandler None
+    Require all granted
+  </Location>
+
+  <Directory /opt/graphite/conf/>
+    Require all granted
+  </Directory>
+</VirtualHost>

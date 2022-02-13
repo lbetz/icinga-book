@@ -1,0 +1,14 @@
+Listen 127.0.0.1:8888 http
+
+<VirtualHost *:8888>
+  WSGIDaemonProcess graphite-api processes=1 threads=1 display-name='%{GROUP}' inactivity-timeout=120
+  WSGIProcessGroup graphite-api WSGIApplicationGroup %{GLOBAL}
+
+  WSGIImportScript /var/www/wsgi-scripts/graphite-api.wsgi process-group=graphite-api application-group=%{GLOBAL}
+
+  WSGIScriptAlias / /var/www/wsgi-scripts/graphite-api.wsgi
+
+  <Directory /var/www/wsgi-scripts/>
+    Require all granted
+  </Directory>
+</VirtualHost>

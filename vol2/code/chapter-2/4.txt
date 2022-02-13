@@ -1,0 +1,11 @@
+--- a/share/application/models/data.php	2021-07-06 23:00:58.024891492 -0700
++++ b/share/application/models/data.php	2021-07-06 23:01:10.773064637 -0700
+@@ -976,7 +976,7 @@
+     */
+     public function getFirstPage(){
+         $pages = $this->getPages();
+-        if(sizeof($pages) > 0 ){
++        if($pages and sizeof($pages) > 0 ){
+             return urldecode($pages[0]);
+         }else{
+             return FALSE;
