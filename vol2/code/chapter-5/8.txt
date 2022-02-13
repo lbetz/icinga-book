@@ -1,0 +1,42 @@
+object Host "fornax.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+  import "mysql-dbms"
+
+  display_name = "fornax"
+  address = "127.0.0.1"
+  address6 = "::1"
+
+  vars.http_vhosts["Icinga Web 2"] = {
+    http_uri = "/icingaweb2"
+  }
+
+  vars.mysql_health_username = "monitor"
+  vars.mysql_health_password = "changeme"
+  vars.mysql_health_hostname = "localhost"
+
+  vars.mysql_health["threadcache-hitrate"] = {}
+  vars.mysql_health["threads-cached"] = {}
+  vars.mysql_health["qcache-hitrate"] = {}
+  vars.mysql_health["qcache-lowmem-prunes"] = {}
+  vars.mysql_health["keycache-hitrate"] = {}
+  vars.mysql_health["bufferpool-hitrate"] = {}
+  vars.mysql_health["bufferpool-wait-free"] = {}
+  vars.mysql_health["tablecache-hitrate"] = {}
+  vars.mysql_health["table-fragmentation"] = {}
+
+  vars.notification["mail"] = {
+    groups = [ "icingaadmins" ]
+  }
+
+  vars.ipmi_address = "10.0.100.1"
+  vars.ipmi_username = "Administrator"
+  vars.ipmi_password = "changeme"
+  vars.ipmi_privilege_level = "user"
+  vars.ipmi_sensors = {
+    "Temperature" = "Temperature"
+    "Fan" = "Fan"
+    "Power Supply" = "Power_Supply"
+    "Drive Slot" = "Drive_Slot"
+  }
+}

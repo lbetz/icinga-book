@@ -1,0 +1,7 @@
+apply Service "snmp" {
+  import "generic-service"
+
+  check_command = "my/thola-snmp"
+
+  assign where host.vars.os == "Switch" && host.vars.snmp_community
+}

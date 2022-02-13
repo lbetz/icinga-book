@@ -1,0 +1,8 @@
+apply Service for (mode in host.vars.cdot_plugins) {
+  import "generic-service"
+
+  check_command = "my/cdot-global"
+  vars.cdot_global_plugin = mode
+
+  ignore where host.vars.netapp_community
+}
