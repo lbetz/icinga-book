@@ -1,0 +1,17 @@
+icingabeat:
+  host: "localhost"
+  port: 5665
+  user: "root"
+  password: "***"
+  ssl.verify: false
+  eventstream.types:
+    - CheckResult
+    - StateChange
+  eventstream.filter: ""
+  eventstream.retry_interval: 10s
+  statuspoller.interval: 60s
+setup.kibana:
+  host: "localhost:5601"
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  loadbalance: true

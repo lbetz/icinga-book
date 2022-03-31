@@ -1,0 +1,22 @@
+input {
+  beats {
+    port => 5044
+    type => "beats"
+  }
+}
+
+output {
+  icinga {
+    host => 'localhost'
+    user => 'root'
+    password =>  'changeme
+    ssl_verify => false
+    action => 'process-check-result'
+    action_config => {
+      exit_status => 0
+      plugin_output => "%{[message]}"
+    }
+    icinga_host => '%{[host][name]}'
+    icinga_service => 'logevent'
+  }
+}

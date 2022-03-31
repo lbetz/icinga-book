@@ -1,0 +1,9 @@
+object Endpoint "fornax.gwc-jonas.local" {
+}
+object Endpoint "virgo.gwc-jonas.local" {
+  host = "172.16.1.10"
+}
+
+object Zone "main" {
+  endpoints = [ "fornax.gwc-jonas.local", "virgo.gwc-jonas.local" ]
+}

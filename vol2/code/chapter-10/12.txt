@@ -1,0 +1,15 @@
+apply Service "critical log events" {
+  import "generic-service"
+
+  check_command = "icingacli-elasticsearch"
+
+  vars.icingacli_elasticsearch_instance = "elasticsearch"
+  vars.icingacli_elasticsearch_index = "logstash*"
+  vars.icingacli_elasticsearch_warning = "3"
+  vars.icingacli_elasticsearch_critical = "5"
+  vars.icingacli_elasticsearch_filter = "host.name=" + host.name + "&syslog_severity=critical"
+  vars.icingacli_elasticsearch_from = "-1h"
+
+  assign where host.name
+}
+
