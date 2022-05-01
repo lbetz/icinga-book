@@ -1,7 +1,0 @@
-template Host "exchange-um" {
-  vars.services["Exchange UM Services"] = {
-    IcingaCheckService_Array_Service = [
-        "MSExchangeUM",
-        "MSExchangeUMCR" ]
-  }
-}

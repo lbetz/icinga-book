@@ -1,4 +1,0 @@
-[ad-auth]
-resource = "ad_ldap"
-backend = "msldap"
-filter = "memberof:1.2.840.113556.1.4.1941:=CN=Icinga,OU=Groups,DC=gwc-jonas,DC=local"

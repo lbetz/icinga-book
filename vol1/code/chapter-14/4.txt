@@ -1,2 +1,0 @@
-send-mails-relay = internet-connection & draco.gwc-jonas.local;dns forwarder & kmw.gwc-jonas.net;mail queue & kmw.gwc-jonas.net;smtp
-display 0;send-mails-relay;Send Mails Relay

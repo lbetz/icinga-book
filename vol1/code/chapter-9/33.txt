@@ -1,9 +1,0 @@
-object Service "smtp groupware" {
-  import "generic-service"
-  host_name = "kmw.gwc-jonas.net"
-
-  check_command = "smtp"
-  command_endpoint = "kmw.gwc-jonas.net"
-
-  vars.smtp_address = "172.16.1.13"
-}

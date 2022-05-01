@@ -1,8 +1,0 @@
-object Host "internet-connection" {
-  import "generic-host"
-  display_name = "Internet Connection"
-  check_command = "icingacli-businessprocess"
-
-  vars.icingacli_businessprocess_config = "infrastructure"
-  vars.icingacli_businessprocess_process = name
-}

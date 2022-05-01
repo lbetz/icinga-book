@@ -1,9 +1,0 @@
-object CheckCommand "disk_smart" {
-  import "plugin-check-command"
-
-  command = [ PluginDir + "/check_ide_smart", "-n" ]
-
-  arguments = {
-    "-d" = "$disk_devices$"
-  }
-}

@@ -1,8 +1,0 @@
-apply Service "swap" {
-  import "generic-service"
-
-  check_command = "swap"
-  command_endpoint = host.name
-
-  assign where get_object("Endpoint", host.name) && host.vars.os == "Linux"
-}

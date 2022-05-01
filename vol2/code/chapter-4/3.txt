@@ -1,8 +1,0 @@
-apply Service for (srv => config in host.vars.manubulon) {
-  import "generic-service"
-  
-  check_command = config.snmp_command
-
-  vars += config
-}
-

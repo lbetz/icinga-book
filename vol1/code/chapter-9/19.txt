@@ -1,7 +1,0 @@
-apply Service "apache status" {
-  import "generic-service"
-
-  check_command = "apache-status"
-
-  assign where "apache-webserver" in host.templates
-}

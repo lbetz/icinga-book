@@ -1,7 +1,0 @@
-apply Service for (desc => config in host.vars.tcp_ports) {
-  import "generic-service"
-
-  check_command = "tcp"
-
-  vars += config
-}

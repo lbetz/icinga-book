@@ -1,3 +1,0 @@
-globals.percent = function(a, b) {
-  b * a / 100
-}

@@ -1,5 +1,0 @@
-apply Service for (sensor => type in host.vars.ipmi_sensors) {
-  import "generic-service"
-  check_command = "ipmi-sensor"
-  vars.ipmi_sensor_type = type
-}

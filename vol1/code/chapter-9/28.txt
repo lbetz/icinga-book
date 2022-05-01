@@ -1,7 +1,0 @@
-object Service "clamd" {
-  import "generic-service"
-  host_name = "kmw.gwc-jonas.net"
-
-  check_command = "clamd"
-  command_endpoint = "kmw.gwc-jonas.net"
-}

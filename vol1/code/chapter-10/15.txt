@@ -1,9 +1,0 @@
-apply Service "pgsql connection" {
-  import "generic-service"
-
-  max_check_attempts = 3
-  check_command = "postgres"
-  vars.postgres_action = "connection"
-
-  assign where "postgres-dbms" in host.templates
-}

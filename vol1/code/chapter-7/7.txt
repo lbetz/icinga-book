@@ -1,8 +1,0 @@
-apply Service "time" {
-  import "generic-service"
-
-  check_command = "Invoke-IcingaCheckTimeSync"
-  command_endpoint = host.name
-
-  assign where get_object("Endpoint", host.name) && host.vars.os == "Windows"
-}

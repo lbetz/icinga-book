@@ -1,9 +1,0 @@
-object ApiUser "icingaweb2" {
-  password = "changeme"
-  permissions = [
-    "status/query",
-    "actions/*",
-    "objects/modify/*",
-    "objects/query/*",
-  ]
-}

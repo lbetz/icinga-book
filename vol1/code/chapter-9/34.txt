@@ -1,9 +1,0 @@
-object Service "dns rbl" {
-  import "generic-service"
-  host_name = "kmw.gwc-jonas.net"
-
-  check_command = "rbl"
-
-  vars.rpl_hostname = "gwc-jonas.net"
-  vars.rbl_server = ["ix.dnsbl.manitu.net", "zen.spamhaus.org"]
-}

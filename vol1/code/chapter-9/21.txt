@@ -1,7 +1,0 @@
-apply Service "nginx status" {
-  import "generic-service"
-
-  check_command = "nginx-status"
-
-  assign where "nginx-webserver" in host.templates
-}

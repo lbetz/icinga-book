@@ -1,5 +1,0 @@
-SOCKFILE=/var/run/rrdcached.sock
-SOCKGROUP=nagios
-SOCKMODE=0664
-DAEMON_GROUP=nagios
-DAEMON_USER=nagios

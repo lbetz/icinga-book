@@ -1,8 +1,0 @@
-/*
- * Host Templates
- */
-template Host "windows-host" {
-  import "generic-host"
-
-  vars.os = "Windows"
-}

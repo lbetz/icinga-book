@@ -1,4 +1,0 @@
-apply Dependency "disable-host-service-checks" to Service {
-  disable_checks = true
-  assign where true
-}

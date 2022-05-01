@@ -1,6 +1,0 @@
-object CheckCommand "my/icmp" {
-  import "icmp"
-  import "ipv4-or-ipv6"
-
-  vars.icmp_address = "$check_address$"
-}

@@ -1,9 +1,0 @@
-object Host "phoenix.gwc-jonas.local" {
-  import "linux-host"
-
-  display_name = "phoenix"
-  address = "172.16.1.15"
-
-  vars.os = "Solaris"
-}
-

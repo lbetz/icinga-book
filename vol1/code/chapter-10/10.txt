@@ -1,9 +1,0 @@
-object Service "ido" {
-  import "generic-service"
-  host_name = NodeName
-
-  check_command = "ido"
-
-  vars.ido_type = "IdoMysqlConnection"
-  vars.ido_name = "ido-mysql"
-}

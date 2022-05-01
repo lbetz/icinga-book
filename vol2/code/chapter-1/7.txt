@@ -1,5 +1,0 @@
-[linuxadmin]
-groups = "LinuxAdmins"
-permissions = "module/monitoring"
-monitoring/filter/objects = "_host_os=Linux"
-application/share/groups = "LinuxAdmins,LinuxDevOps"

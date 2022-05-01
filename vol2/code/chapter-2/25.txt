@@ -1,6 +1,0 @@
-object GraphiteWriter "graphite" {
-  //host = "127.0.0.1"
-  //port = 2003
-  enable_send_thresholds = true
-  enable_send_metadata = false
-}

@@ -1,6 +1,0 @@
-object Service "elasticsearch" {
-  import "generic-service"
-  host_name = "canis.gwc-jonas.local"
-
-  check_command = "elasticsearch"
-}

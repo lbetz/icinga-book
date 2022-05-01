@@ -1,9 +1,0 @@
-apply Service "cpu usage" {
-  import "generic-service"
-
-  check_command = "pve"
-
-  vars.pve_mode = "cpu"
-  vars.pve_warning = vars.pve_cpu_warning
-  vars.pve_critical = vars.pve_cpu_critical
-}

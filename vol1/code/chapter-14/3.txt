@@ -1,2 +1,0 @@
-webproxy-extern = internet-connection & kmv.gwc-jonas.net;webproxy
-display 1;webproxy-extern;Webproxy extern

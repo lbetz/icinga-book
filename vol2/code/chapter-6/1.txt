@@ -1,9 +1,0 @@
-[vSphereDB]
-type = "db"
-db = "mysql"
-host = "localhost"
-port = 3306
-dbname = "vspheredb"
-username = "vspheredb"
-password = "XXX"
-charset = "utf8mb4"

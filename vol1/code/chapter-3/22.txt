@@ -1,8 +1,0 @@
-apply Service "hostname" {
-  import "generic-service"
-
-  check_command = "hostname"
-
-  //assign where host.vars.os == "Linux"
-  assign where host.name == NodeName
-}

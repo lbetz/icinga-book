@@ -1,4 +1,0 @@
-BASE            dc=gwc-jonas,dc=local
-URI             ldap://andromeda.gwc-jonas.local
-
-TLS_REQCERT     demand

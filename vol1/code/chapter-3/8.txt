@@ -1,6 +1,0 @@
-object Host "antlia.gwc-jonas.net" {
-  import "linux-host"
-
-  display_name = "antlia"
-  address = "172.16.2.12"
-}

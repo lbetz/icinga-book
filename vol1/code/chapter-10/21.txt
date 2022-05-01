@@ -1,8 +1,0 @@
-object Host "ora-instance01.gwc-jonas.local" {
-  import "oracle-instance"
-
-  display_name = "ora-instance01"
-
-  vars.oracle_health_username = "ora-monitor"
-  vars.oracle_health_password = "changeme"
-}

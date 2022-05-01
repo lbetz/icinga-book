@@ -1,9 +1,0 @@
-apply Service "Health" {
-  import "generic-service"
-
-  check_command = "nwc_health"
-
-  vars.nwc_health_community = host.vars.nwc_health_community
-
-  assign where host.vars.os == "Switch"
-}

@@ -1,8 +1,0 @@
-apply Service for (msq => config in host.vars.jmx) {
-  import "generic-service"
-
-  check_command = "jmx4perl"
-  vars += config
-
-  ignore where typeof(config) != Dictionary
-}

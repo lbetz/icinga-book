@@ -1,8 +1,0 @@
-apply Service "helath" {
-  import "generic-service"
-
-  check_command = "cisco_health"
-  vars.cisco_health_community = "$snmp_community$"
-
-  apply where host.vars.os == "Switch" && host.vars.vendor == "Cisco"
-}

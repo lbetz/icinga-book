@@ -1,8 +1,0 @@
-template Host "mysql-dbms" {
-  vars.mysql_health["connection-time"] = {}
-  vars.mysql_health["threads-connected"] = {}
-  vars.mysql_health["connects-aborted"] = {}
-  vars.mysql_health["log-waits"] = {}
-  vars.mysql_health["slow-queries"] = {}
-  vars.mysql_health["long-running-procs"] = {}
-}

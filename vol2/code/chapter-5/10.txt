@@ -1,4 +1,0 @@
-template CheckCommand "by_ssh_base" {
-  import "by_ssh"
-   vars.by_ssh_plugindir = PluginDir
-}

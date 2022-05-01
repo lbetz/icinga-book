@@ -1,5 +1,0 @@
-[backend]
-resource = "mysql-reporting"
-
-[mail]
-from = "icinga@gwc-jonas.local"

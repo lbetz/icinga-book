@@ -1,8 +1,0 @@
-apply Service "Active Directory" {
-    import "generic-service"
-
-    check_command = "my/vbs-local-ad"
-    command_endpoint = host.name
-
-    assign where "domain-controller" in host.templates
-}

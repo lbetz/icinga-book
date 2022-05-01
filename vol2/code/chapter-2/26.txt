@@ -1,7 +1,0 @@
-[icinga]
-pattern = ˆicinga2\.
-retentions = 60s:7d,5m:28d,15m:1y
-
-[default_1min_for_1day]
-pattern = .*
-retentions = 60s:1d

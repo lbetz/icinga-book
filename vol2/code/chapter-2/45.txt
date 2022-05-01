@@ -1,6 +1,0 @@
-[hostalive]
-dashboard = "hostalive"
-panelId = "1"
-orgId = ""
-repeatable = "no"
-dashboarduid = "changeme"

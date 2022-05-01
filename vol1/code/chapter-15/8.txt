@@ -1,9 +1,0 @@
-object Host "sculptor.gwc-jonas.net" {
-  import "linux-host"
-  import "dmz-net"
-
-  display_name = "sculptor"
-  address = "172.16.2.11"
-
-  vars.cluster_zone = "dmz"
-}

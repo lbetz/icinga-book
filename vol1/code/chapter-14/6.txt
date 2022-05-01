@@ -1,5 +1,0 @@
-shop-website = aquarius.gwc-jonas.local;db shop & antlia.gwc-jonas.net;Online Shop & antlia.gwc-jonas.net;Online Shop cert
-display 0;shop-website;Shop Website
-
-cash-website = antlia.gwc-jonas.net;cash & antlia.gwc-jonas.net;cash cert & @infrastructure:webproxy-extern
-display 0;cash-website; Cash Website

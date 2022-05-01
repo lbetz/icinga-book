@@ -1,9 +1,0 @@
-globals.dynamic_threshold = function(timeperiod, ivalue, ovalue) {
-  return function() use (timeperiod, ivalue, ovalue) {
-    if (get_time_period(timeperiod).is_inside) {
-     return ivalue
-    } else {
-     return ovalue
-    }
-  }
-}

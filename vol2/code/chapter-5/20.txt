@@ -1,8 +1,0 @@
-apply Service "disk status" {
-  import "generic-service"
-
-  check_command = "my/cdot-disk"
-
-  assign where host.vars.os == "NetApp"
-  ignore where host.vars.netapp_community
-}

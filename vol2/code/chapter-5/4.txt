@@ -1,7 +1,0 @@
-object CheckCommand "interfaces-negate" {
-  import "interfaces"
-  vars.negate_arguments = arguments
-  arguments = null
-  vars.negate_command = PluginContribDir + "/check_interfaces"
-  import "negate"
-}

@@ -1,7 +1,0 @@
-apply Service for (oid => config in host.vars.snmp_oids) {
-  import "generic-service"
-
-  check_command = "snmp"
-
-  vars += config
-}

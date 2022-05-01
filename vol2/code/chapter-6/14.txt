@@ -1,7 +1,0 @@
-apply Service "cluster" {
-  import "generic-service"
-  check_command = "pve"
-  vars.pve_mode = "cluster"
-
-  assign where host.vars.os = "pve" && host.vars.pve_cluster
-}

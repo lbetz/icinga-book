@@ -1,9 +1,0 @@
-object Host "netapp1.gwc-jonas.local" {
-  import "netapp-host"
-
-  address = "172.16.1.31"
-
-  vars.cdot_username = "monitor"
-  vars.cdot_password = "changeme"
-  vars.netapp_cluster = true
-}
