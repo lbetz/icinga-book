@@ -1,0 +1,9 @@
+[global-rules]
+source = /usr/local/src/custom-rules.git/director-global
+target = zones.d/director-global/custom-rules
+extensions = .conf
+
+[master-rules]
+source = /usr/local/src/custom-rules.git/master
+target = zones.d/master/custom-rules
+extensions = .conf .md

@@ -1,0 +1,8 @@
+apply Service "cpu usage" {
+  import "generic-service"
+
+  check_command = "Invoke-IcingaCheckCPU"
+  command_endpoint = host.name
+
+  assign where get_object("Endpoint", host.name) && host.vars.os == "Windows"
+}

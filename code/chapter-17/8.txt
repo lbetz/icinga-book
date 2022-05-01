@@ -1,0 +1,7 @@
+template Host "generic-switch" {
+    import "generic-host"
+
+    vars.os = "Switch"
+    vars.snmp_community = "public"
+    vars.thola_api_target = "http://127.0.0.1:8237"
+}

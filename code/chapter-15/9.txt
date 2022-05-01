@@ -1,0 +1,9 @@
+apply Service for (mode => config in host.vars.mysql_health) {
+  import "generic-service"
+
+  display_name = "MySQL " + mode.replace("-", " ")
+  check_command = "mysql_health"
+
+  vars.mysql_health_mode = mode
+  vars += config
+}

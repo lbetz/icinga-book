@@ -1,0 +1,6 @@
+object TimePeriod "backup" {
+  ranges = { 
+    saturday = "02:00-03:00"
+    sunday = "02:00-03:00"
+  }
+}

@@ -1,0 +1,13 @@
+[fornax]
+transport = "api"
+host = "fornax.gwc-jonas.local"
+port = "5665"
+username = "icingaweb2"
+password = "CHANGEME"
+
+[virgo]
+transport = "api"
+host = "virgo.gwc-jonas.local"
+port = "5665"
+username = "icingaweb2"
+password = "CHANGEME"

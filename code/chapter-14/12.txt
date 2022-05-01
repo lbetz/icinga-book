@@ -1,0 +1,10 @@
+object Service "dhcp dmz" {
+  import "generic-service"
+  host_name = "draco.gwc-jonas.local"
+
+  check_command = "dhcp"
+  command_endpoint = "antlia.gwc-jonas.net"
+
+  vars.dhcp_interface = "eth1"
+  vars.dhcp_serverip = "172.16.2.254"
+}

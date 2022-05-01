@@ -1,0 +1,27 @@
+object Endpoint NodeName { 
+}
+
+object Endpoint "sculptor.gwc-jonas.net" { 
+  host = "172.16.2.11"
+}
+
+object Zone ZoneName {
+  endpoints = [ NodeName, ]
+  parent = "dmz"
+}
+
+object Zone "dmz" {
+  endpoints = [ "sculptor.gwc-jonas.net", ] 
+}
+
+object Zone "global-templates" { 
+  global = true
+}
+
+object Zone "linux-commands" {
+  global = true
+}
+
+object Zone "windows-commands" { 
+  global = true
+}

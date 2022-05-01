@@ -1,0 +1,11 @@
+template Host "lan-vm" {
+  import "lan-host"
+  import "vcenter-access"
+  vars.vmware_cluster = "gwc-jonas.local"
+}
+
+template Host "dmz-vm" {
+  import "dmz-host"
+  import "vcenter-access"
+  vars.vmware_cluster = "gwc-jonas.net"
+}

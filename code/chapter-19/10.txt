@@ -1,0 +1,10 @@
+object Service "puppetdb" {
+  import "generic-service"
+  host_name = "carina.gwc-jonas.local"
+
+  check_command = "my/puppetdb"
+  command_endpoint = "carina.gwc-jonas.local"
+
+  vars.puppetdb_cmd_warning = 30
+  vars.puppetdb_cmd_critical = 50
+}

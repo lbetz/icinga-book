@@ -1,0 +1,10 @@
+apply Dependency "disable-vmware-vcenter-checks" to Service {
+  parent_host_name = "triangulum.gwc-jonas.local"
+  parent_service_name = "vSphere SOAP"
+
+  states = [ OK, Warning ]
+  disable_checks = true
+  disable_notifications = true
+
+  assign where service.check_command == "vmware-esx-soap-vm-runtime-tools"
+}

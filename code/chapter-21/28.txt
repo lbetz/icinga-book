@@ -1,0 +1,12 @@
+search_index: /var/lib/graphite-api/index
+whisper:
+  directories:
+    - /var/lib/graphite/whisper
+time_zone: Europe/Berlin
+carbon:
+  hosts:
+    - 127.0.0.1:7002
+  timeout: 1
+  retry_delay: 15
+  carbon_prefix: carbon
+  replication_factor: 1

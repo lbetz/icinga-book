@@ -1,0 +1,8 @@
+apply Service "memory" {
+  import "generic-service"
+
+  check_command = "mem"
+  command_endpoint = host.name
+
+  assign where get_object("Endpoint", host.name) && host.vars.os == "Linux"
+}

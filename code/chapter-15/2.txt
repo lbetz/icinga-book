@@ -1,0 +1,10 @@
+apply Service for (db => config in host.vars.mysql) {
+  import "generic-service"
+
+  check_command = "mysql"
+  command_endpoint = host.name
+
+  vars += config
+
+  ignore where typeof(config) != Dictionary
+}

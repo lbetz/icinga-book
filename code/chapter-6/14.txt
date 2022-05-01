@@ -1,0 +1,17 @@
+object Host "phoenix.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+
+  display_name = "phoenix"
+  address = "172.16.1.15"
+
+  vars.os = "Solaris"
+
+  vars.by_ssh_logname = "icinga"
+  vars.by_ssh_plugindir = "/opt/csw/libexec/nagios-plugins"
+
+  vars.disks["disk /"] += {
+    disk_wfree = 90
+    disk_cfree = 95
+  }
+}

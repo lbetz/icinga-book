@@ -1,0 +1,329 @@
+template CheckCommand "my/generic-thola-check-command" {
+    command = [ PluginContribDir + "/thola-client" ]
+
+    arguments += {
+        "(no key.0)" = {
+            order = -2
+            required = true
+            skip_key = true
+            value = "check"
+            description = "Thola Check Mode"
+        }
+        "--target-api" = {
+            required = true
+            value = "$thola_api_target$"
+            description = "Target URL  of the thola API"
+        }
+    }
+}
+
+template CheckCommand "my/generic-thola-device-check-command" {
+    import "ipv4-or-ipv6"
+    import "my/generic-thola-check-command"
+
+    arguments += {
+        "(no key.1)" = {
+            order = 0
+            required = true
+            skip_key = true
+            value = "$thola_address$"
+            description = "Thola Check Device Mode"
+        }
+        "--snmp-community" = {
+            required = false
+            value = "$thola_snmp_community$"
+            description = "SNMP Community of target"
+        }
+        "--snmp-version" = {
+            required = false
+            value = "$thola_snmp_protocol$"
+            description = "SNMP Version of target"
+        }
+    }
+
+    vars.thola_address = "$check_address$"
+    vars.thola_snmp_community = "$snmp_community$"
+    vars.thola_snmp_version = "v2c"
+}
+
+object CheckCommand "my/thola-cpu-load" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "cpu-load"
+            description = "CPU-Load mode"
+        }
+        "--critical" = {
+            required = false
+            value = "$thola_cpu_load_critical$"
+            description = "Critical Threshold"
+        }
+        "--warning" = {
+            required = false
+            value = "$thola_cpu_load_warning$"
+            description = "Warning Threshold"
+        }
+    }
+}
+
+object CheckCommand "my/thola-interface-metrics" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "interface-metrics"
+            description = "Interface-Metrics mode"
+        }
+    }
+}
+
+object CheckCommand "my/thola-hardware-health" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "hardware-health"
+            description = "Hardware-Health mode"
+        }
+    }
+}
+
+object CheckCommand "my/thola-snmp" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "snmp"
+            description = "SNMP Mode"
+        }
+    }
+}
+
+object CheckCommand "my/thola-identify" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "identify"
+            description = "Identify Mode"
+        }
+        "--model" = {
+            required = false
+            value = "$thola_model$"
+            description = "Device Model"
+        }
+        "--os-version" = {
+            required = false
+            value = "$thola_os_version$"
+            description = "OS Version of Device"
+        }
+        "--vendor" = {
+            required = false
+            value = "$thola_vendor$"
+            description = "Vendor of the Device"
+        }
+        "--serial-number" = {
+            required = false
+            value = "$thola_serial_number$"
+            description = "Serial Number of Device"
+        }
+        "--snmp-discover-retries" = {
+            required = false
+            value = "$thola_discover_retries$"
+            description = "Number of Discover Retries"
+        }
+        "--snmp-discover-timeout" = {
+            required = false
+            value = "$thola_discover_timeouts$"
+            description = "Number of Discover Timeouts"
+        }
+    }
+}
+
+object CheckCommand "my/thola-memory-usage" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "memory-usage"
+            description = "Memory Usage Mode"
+        }
+        "--critical" = {
+            required = false
+            value = "$thola_memory_usage_critical$"
+            description = "Critical Threshold"
+        }
+        "--warning" = {
+            required = false
+            value = "$thola_memory_usage_warning$"
+            description = "Warning Threshold"
+        }
+    }
+}
+
+object CheckCommand "my/thola-sbc" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "sbc"
+            description = "SBC Mode"
+        }
+        "--system-health-score-critical" = {
+            required = false
+            value = "$thola_system_health_score_critical$"
+            description = "Critical Threshold for System Health"
+        }
+        "--system-health-score-warning" = {
+            required = false
+            value = "$thola_system_health_score_warning$"
+            description = "Warning Threshold for System Health"
+        }
+    }
+}
+
+object CheckCommand "my/thola-thola-server" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "thola-server"
+            description = "Thola-Server Mode"
+        }
+    }
+}
+
+object CheckCommand "my/thola-ups" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "ups"
+            description = "UPS Mode"
+        }
+        "--batt-current-critical-max" = {
+            required = false
+            value = "$thola_batt_current_critical_max$"
+            description = "Critical Threshold Battery max"
+        }
+        "--batt-current-critical-min" = {
+            required = false
+            value = "$thola_batt_current_critical_min$"
+            description = "Critical Threshold Battery min"
+        }
+        "--batt-current-warning-max" = {
+            required = false
+            value = "$thola_batt_current_warning_max$"
+            description = "Warning Threshold Battery max"
+        }
+        "--batt-current-warning-min" = {
+            required = false
+            value = "$thola_batt_current_warning_min$"
+            description = "Warning Threshold Battery min"
+        }
+        "--batt-temperature-critical-max" = {
+            required = false
+            value = "$thola_batt_temperature_critical_max$"
+            description = "Critical Threshold Battery Temperature max"
+        }
+        "--batt-temperature-critical-min" = {
+            required = false
+            value = "$thola_batt_temperature_critical_min$"
+            description = "Critical Threshold Battery Temperature min"
+        }
+        "--batt-temperature-warning-max" = {
+            required = false
+            value = "$thola_batt_temperature_warning_max$"
+            description = "Warning Threshold Battery Temperature max"
+        }
+        "--batt-temperature-warning-min" = {
+            required = false
+            value = "$thola_batt_temperature_warning_min$"
+            description = "Warning Threshold Battery Temperature min"
+        }
+        "--current-load-critical-max" = {
+            required = false
+            value = "$thola_current_load_critical_max$"
+            description = "Critical Threshold Current Load max"
+        }
+        "--current-load-critical-min" = {
+            required = false
+            value = "$thola_current_load_critical_min$"
+            description = "Critical Threshold Current Load min"
+        }
+        "--current-load-warning-max" = {
+            required = false
+            value = "$thola_current_load_warning_max$"
+            description = "Warning Threshold Current Load max"
+        }
+        "--current-load-warning-min" = {
+            required = false
+            value = "$thola_current_load_warning_min$"
+            description = "Warning Threshold Current Load min"
+        }
+        "--rectifier-current-critical-max" = {
+            required = false
+            value = "$thola_rectifier_current_critical_max$"
+            description = "Critical Threshold Rectifier Current max"
+        }
+        "--rectifier-current-critical-min" = {
+            required = false
+            value = "$thola_rectifier_current_critical_min$"
+            description = "Critical Threshold Rectifier Current min"
+        }
+        "--rectifier-current-warning-max" = {
+            required = false
+            value = "$thola_rectifier_current_warning_max$"
+            description = "Warning Threshold Rectifier Current max"
+        }
+        "--rectifier-current-warning-min" = {
+            required = false
+            value = "$thola_rectifier_current_warning_min$"
+            description = "Warning Threshold Rectifier Current min"
+        }
+        "--system-voltage-critical-max" = {
+            required = false
+            value = "$thola_system_voltage_critical_max$"
+            description = "Critical Threshold System Voltage max"
+        }
+        "--system-voltage-critical-min" = {
+            required = false
+            value = "$thola_system_voltage_critical_min$"
+            description = "Critical Threshold System Voltage min"
+        }
+        "--system-voltage-warning-max" = {
+            required = false
+            value = "$thola_system_voltage_warning_max$"
+            description = "Warning Threshold System Voltage max"
+        }
+        "--system-voltage-warning-min" = {
+            required = false
+            value = "$thola_system_voltage_warning_min$"
+            description = "Warning Threshold System Voltage min"
+        }
+    }
+}
+\end{lstlisting}

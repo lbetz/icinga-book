@@ -1,0 +1,4 @@
+# icinga reporting
+local   reporting   reporting                         md5
+host    reporting   reporting   127.0.0.1/32          md5
+host    reporting   reporting   ::1/128               md5

@@ -1,0 +1,14 @@
+object Host "aquarius.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+
+  address = "172.16.1.16"
+  display_name = "aquarius"
+
+  vars.mysql["db icinga"] = {
+    mysql_hostname = "172.16.1.11"
+    mysql_username = "reporting"
+    mysql_password = "changeme"
+    mysql_database = "icinga2"
+  }
+}

@@ -1,0 +1,13 @@
+apply Service for (db => config in host.vars.mysql_database) {
+  import "generic-service"
+
+  name = "MySQL database size " + db
+  check_command = "mysql_health"
+
+  vars += config
+
+  vars.mysql_health_mode = "sql"
+  vars.mysql_health_name = "SELECT sum(data_length + index_length)/1024/1024 FROM information_schema.TABLES where table_schema='" + db + "';"
+  vars.mysql_health_name2 = db
+  vars.mysql_health_units = "MB"
+}

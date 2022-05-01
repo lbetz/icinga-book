@@ -1,0 +1,21 @@
+apply Service "Logstash Indexer" {
+  import "generic-service"
+  check_command = "procs"
+
+  vars.procs_user = "logstash"
+  vars.procs_argument = "logstash/conf.d"
+  vars.procs_critical = "1:1"
+
+  assign where "logstash" in host.templates
+}
+
+apply Service "Logstash Shipper" {
+  import "generic-service"
+  check_command = "procs"
+
+  vars.procs_user = "logstash"
+  vars.procs_argument = "logstash/shipper-conf.d"
+  vars.procs_critical = "1:1"
+
+  assign where "logstash" in host.templates
+}

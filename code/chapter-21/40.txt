@@ -1,0 +1,5 @@
+object InfluxdbWriter "influxdb" {
+  database = "icinga2"
+  username = "icinga2"
+  password = "CHANGEME"
+}

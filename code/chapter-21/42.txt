@@ -1,0 +1,4 @@
+# TYPE  DATABASE    USER         ADDRESS        METHOD
+local   grafana     grafana                     md5
+host    grafana     grafana      127.0.0.1/32   md5
+host    grafana     grafana      ::1/128        md5

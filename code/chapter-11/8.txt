@@ -1,0 +1,6 @@
+"hostname","ipaddress","operatingsystem"
+"fornax.gwc-jonas.local","172.16.1.11","Centos"
+"draco.gwc-jonas.local","172.16.1.254","Debian"
+"sculptor.gwc-jonas.net","172.16.2.11","RHEL"
+"antlia.gwc-jonas.net","172.16.2.12","Debian"
+"phoenix.gwc-jonas.local","172.16.1.15","Solaris"

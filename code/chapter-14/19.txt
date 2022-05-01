@@ -1,0 +1,4 @@
+template Host "nginx-webserver" {
+  vars.nginx_status_warning = "10,5,5"
+  vars.nginx_status_critical = "20,10,10"
+}

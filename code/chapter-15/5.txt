@@ -1,0 +1,9 @@
+apply Service for (mode => config in host.vars.mysql_health) {
+  import "generic-service"
+
+  check_command = "mysql_health"
+
+  vars += config
+
+  ignore where typeof(config) != Dictionary
+}

@@ -1,0 +1,13 @@
+object Host "canis.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+  import "logstash"
+
+  display_name = "canis"
+  address = "172.16.1.17"
+
+  vars.http_vhosts["kibana"] {
+    http_vhost = "canis.gwc-jonas.local"
+    http_port = 5601
+  }
+}

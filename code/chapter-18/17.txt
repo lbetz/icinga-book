@@ -1,0 +1,14 @@
+apply Service "storage " for (storage => \
+    config in host.vars.pve_storages) {
+  import "generic-service"
+
+  check_command = "pve"
+
+  vars.pve_resource_name = storage
+  vars.pve_warning = 80
+  vars.pve_critical = 90
+  vars += config
+  vars.pve_mode = "storage"
+
+  ignore where typeof(config) != Dictionary
+}

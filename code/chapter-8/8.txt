@@ -1,0 +1,5 @@
+[ad-groups]
+resource = "ad_ldap"
+user_backend = "ad-auth"
+group_filter = "memberof:1.2.840.113556.1.4.1941:=CN=Icinga,OU=Groups,DC=gwc-jonas,DC=local"
+backend = "msldap"

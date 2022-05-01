@@ -1,0 +1,16 @@
+object CheckCommand "my/puppetdb" {
+
+  command = [ PluginContribDir + "/check_puppetdb.rb" ]
+
+  arguments = {
+    "--host" = "$puppetdb_address$"
+    "--port" = "$puppetdb_port$"
+    "--sslport" = "$puppetdb_sslport$"
+    "--timeout" = "$puppetdb_timeout$"
+    "--queuewarn" = "$puppetdb_queue_warning$"
+    "--queuecrit" = "$puppetdb_queue_critical$"
+    "--cmd_p_secwarn" = "$puppetdb_cmd_warning$"
+    "--cmd_p_seccrit" = "$puppetdb_cmd_critical$"
+  }
+  vars.puppetdb_address = "127.0.0.1"
+}

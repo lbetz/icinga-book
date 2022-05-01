@@ -1,0 +1,112 @@
+template CheckCommand "my/cdot" {
+  import "ipv4-or-ipv6"
+
+  arguments = {
+    "--hostname" = {
+      value = "$cdot_address$"
+    }
+    "--username" = {
+      value = "$cdot_username$"
+      required = true
+    }
+    "--password" = {
+      value = "$cdot_password$"
+      required = true
+    }
+  }
+  vars.cdot_address = "$check_address$"
+}
+
+object CheckCommand "my/cdot-global" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_global.pl" ]
+
+  arguments += {
+    "--plugin" = {
+      value = "$cdot_global_plugin$"
+    }
+  }
+
+  vars.cdot_global_plugin = "health"
+}
+
+object CheckCommand "my/cdot-global" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_global.pl" ]
+
+  arguments += {
+    "--plugin" = {
+      value = "$cdot_global_plugin$"
+    }
+  }
+
+  vars.cdot_global_plugin = "health"
+}
+
+object CheckCommand "my/cdot-clusterlinks" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_clusterlinks.pl" ]
+}
+
+object CheckCommand "my/cdot-volume" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_volume.pl" ]
+
+  arguments += {
+    "--volume" = "$cdot_volume_volume$"
+    "--size-warning" = "$cdot_volume_size_warning$"
+    "--size-critical" = "$cdot_volume_size_critical$"
+    "--inode-warning" = "$cdot_volume_inode_warning$"
+    "--inode-critical" = "$cdot_volume_inode_critical$"
+    "--snap-warning" = "$cdot_volume_snap_warning$"
+    "--snap-critical" = "$cdot_volume_snap_critical$"
+    "--perf" = {
+      set_if = "$cdot_volume_perfdata$"
+    }
+    "--exclude" = "$cdot_volume_exclude$"
+  }
+
+  vars.cdot_volume_size_warning = 80
+  vars.cdot_volume_size_critical = 90
+}
+
+object CheckCommand "my/cdot-snapmirror" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_snapmirror.pl" ]
+
+  arguments += {
+    "--volume" = {
+     value = "$cdot_snapmirror_volume$"
+    }
+    "--vserver" = {
+      value = "$cdot_snapmirror_vserver$"
+    }
+    "--lag" = {
+      value = "$cdot_snapmirror_lag$"
+    }
+  }
+}
+
+object CheckCommand "my/cdot-lun" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_lun.pl" ]
+
+  arguments += {
+    "--volume" = "$cdot_lun_volume$"
+    "--size-warning" = "$cdot_lun_size_warning$"
+    "--size-critical" = "$cdot_lun_size_critical$"
+    "--vserver" = "$cdot_lun_vserver$"
+    "--perf" = {
+      set_if = "$cdot_lun_perfdata$"
+    }
+  }
+
+  vars.cdot_lun_size_warning = 80
+  vars.cdot_lun_size_critical = 90
+}

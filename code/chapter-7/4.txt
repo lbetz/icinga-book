@@ -1,0 +1,13 @@
+apply Service "memory" {
+  import "generic-service"
+
+  check_command = "Invoke-IcingaCheckMemory"
+  command_endpoint = host.name
+
+  vars.IcingaCheckMemory_Object_WarningPercent = "100"
+  vars.IcingaCheckMemory_Object_CriticalPercent = "100"
+  vars.IcingaCheckMemory_String_Warning = "1700MB"
+  vars.IcingaCheckMemory_String_Critical = "1850MB"
+
+  assign where get_object("Endpoint", host.name) && host.vars.os == "Windows"
+}

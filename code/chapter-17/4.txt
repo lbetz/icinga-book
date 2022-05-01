@@ -1,0 +1,14 @@
+template Host "generic-switch" {
+  import "generic-host"
+
+  vars.interfaces_community = "public"
+  vars.interfaces["Ports"] = {
+    interfaces_negate = "WARNING"
+    interfaces_match_aliases = true
+    interfaces_regex = "ˆUpW"
+  }
+  vars.interfaces["Uplink Ports"] = {
+    interfaces_match_aliases = true
+    interfaces_regex = "ˆUpC"
+  }
+}

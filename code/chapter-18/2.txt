@@ -1,0 +1,8 @@
+--- Crypt-SSLeay-0.73_06/Makefile.PL 2021-08-15 11:09:53 -0700
++++ Crypt-SSLeay-0.73_06/Makefile.PL 2017-04-18 11:36:02 -0700
+@@ -8,6 +8,7 @@
+ use File::Spec::Functions qw( catfile rel2abs );
+ use Getopt::Long qw( GetOptionsFromArray );
+
++push @INC, '.';
+ unless( require( catfile qw(inc IO Interactive Tiny.pm) ) ) {

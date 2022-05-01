@@ -1,0 +1,10 @@
+apply Service "log event" {
+  check_interval = 10m
+  retry_interval = 1m
+  max_check_attempts = 1
+  check_command = "dummy"
+  volatile = true
+  enable_notifications = false
+
+  assign where host.name
+}

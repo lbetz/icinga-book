@@ -1,0 +1,17 @@
+template CheckCommand "by_ssh_base" {
+  import "by_ssh"
+  vars.by_ssh_plugindir = PluginDir
+}
+
+var cmdlist = [ "load", "procs", "disk", "ntp_time" ]
+
+for (cmd in cmdlist) {
+  object CheckCommand "by_ssh_" + cmd use(cmd) {
+    import cmd
+    vars.by_ssh_arguments = arguments
+    arguments = null
+    vars.by_ssh_command = "$by_ssh_plugindir$/check_" + cmd
+    vars.by_ssh_plugindir = PluginDir
+    import "by_ssh_base"
+  }
+}

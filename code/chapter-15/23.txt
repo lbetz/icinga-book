@@ -1,0 +1,8 @@
+apply Service for (ldap => config in host.vars.ldap) {
+  import "generic-service"
+
+  check_command = "ldap"
+  vars += config
+
+  ignore where typeof(config) != Dictionary
+}

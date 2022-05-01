@@ -1,0 +1,23 @@
+object CheckCommand "cisco_health" {
+  import "ipv4-or-ipv6"
+
+  command = [ PluginContribDir + "/check_cisco_health" ]
+
+  arguments = {
+    "-c" = {
+      value = "$cisco_health_community$"
+      description = "SNMP community to use."
+    }
+    "-h" = {
+      value = "$cisco_health_address$"
+      description = "Hostname or address to ask."
+    }
+    "-t" = {
+      value = "$cisco_health_timeout$"
+      description = "Sets the SNMP timeout (in ms)."
+    }
+  }
+
+  vars.cisco_health_address = "$check_address$"
+  vars.cisco_health_community = "public"
+}

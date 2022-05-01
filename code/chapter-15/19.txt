@@ -1,0 +1,24 @@
+template Host "oracle-instance" {
+  import "generic-host"
+
+  check_command = "tnsping"
+
+  vars.oracle_tns_admin = "/etc/icinga2"
+  vars.oracle_health_connect = {{
+    return macro("$host.name$").upper()
+  }}
+
+  vars.oracle_health["connected-users"] = {}
+  vars.oracle_health["session-usage"] = {}
+  vars.oracle_health["process-usage"] = {}
+  vars.oracle_health["rman-backup-problems"] = {}
+
+  vars.oracle_health["sga-data-buffer-hit-ratio"] = {
+    oracle_health_warning = "96:"
+    oracle_health_critical = "92:"
+  }
+
+  vars.oracle_health["sga-shared-pool-free"] = {}
+  vars.oracle_health["tablespace-free"] = {}
+  vars.oracle_health["datafile-io-traffic"] = {}
+}

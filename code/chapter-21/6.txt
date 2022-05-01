@@ -1,0 +1,11 @@
+[Unit]
+Description=RRDtool cache
+daemonAfter=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/rrdcached.pid
+ExecStart=/usr/bin/rrdcached -B -s icinga -m664 -p /var/run/rrdcached.pid -G icinga -U icinga -l unix:/var/run/rrdcached.sock -j /var/tmp/
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+object Service "kerberos" {
+  import "generic-service"
+
+  host_name = "andromeda.gwc-jonas.local"
+  check_command = "kdc"
+
+  vars.kdc_principal = "KDC/monitoring.gwc-jonas.local@GWC-JONAS.LOCAL"
+  vars.kdc_keytab = "/etc/icinga2/key.tab"
+}

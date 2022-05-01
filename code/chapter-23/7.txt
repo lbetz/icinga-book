@@ -1,0 +1,26 @@
+filebeat.inputs:
+  - type: tcp
+    enabled: true
+    max_message_size: 10MiB
+    host: "0.0.0.0:514"
+  - type: udp
+    enabled: true
+    max_message_size: 10MiB
+    host: "0.0.0.0:514"
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/messages
+    fields:
+      type: syslog
+    fields_under_root: true
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/kibana/kibana.log
+    fields:
+      type: kibana
+    fields_under_root: true
+output.logstash:
+  hosts: ["localhost:5044"]
+  loadbalance: true

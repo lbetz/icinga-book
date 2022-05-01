@@ -1,0 +1,8 @@
+/*
+ * Host templates
+ */
+template Host "linux-host" {
+  import "generic-host"
+
+  vars.os = "Linux"
+}

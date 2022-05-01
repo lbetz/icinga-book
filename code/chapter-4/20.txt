@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$2" == "--fqdn" ]; then
+  HOSTNAME=$(hostname --fqdn) || exit 3
+else
+  HOSTNAME=$(hostname --short) || exit 3
+fi
+
+if [ $HOSTNAME == $1 ]; then
+  echo "OK: hostname matches $1" && exit 0
+else
+  echo "WARNING: hostname does not match $1" && exit 1
+fi

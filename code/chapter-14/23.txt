@@ -1,0 +1,7 @@
+apply Service for (data => config in host.vars.squid) {
+  import "generic-service"
+
+  check_command = "squid"
+
+  vars += config
+}

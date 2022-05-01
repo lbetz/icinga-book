@@ -1,0 +1,8 @@
+[icingaweb2-module-director]
+type = "db"
+db = "mysql"
+host = "localhost"
+dbname = "director"
+username = "director"
+password = "CHANGEME"
+charset = "utf8"

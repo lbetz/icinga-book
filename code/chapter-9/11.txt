@@ -1,0 +1,8 @@
+apply Service "ssh" {
+  import "generic-service"
+
+  check_command = "ssh"
+  max_check_attemps = 3
+
+  assign where host.vars.os in ["Linux", "Solaris"]
+}

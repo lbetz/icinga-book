@@ -1,0 +1,59 @@
+template CheckCommand "my/netapp" {
+  import "ipv4-or-ipv6"
+
+  command = [ PluginContribDir + "/check_naf.py", "$netapp_check$" ]
+
+  arguments = {
+    "-H" = "$netapp_address$"
+    "-C" = {
+      value = "$netapp_community$"
+      required = true
+    }
+  }
+
+  vars.netapp_address = "$check_address$"
+}
+
+object CheckCommand "my/netapp-status" {
+  import "my/netapp"
+
+  vars.netapp_check = "global"
+}
+
+object CheckCommand "my/netapp-cpu" {
+  import "my/netapp"
+
+  vars.netapp_check = \
+    "cpu,$netapp_target$,$netapp_cpu_warning$,$netapp_cpu_critical$"
+}
+
+object CheckCommand "my/netapp-cluster" {
+  import "my/netapp"
+
+  vars.netapp_check = "cluster"
+}
+
+object CheckCommand "my/netapp-cifs-stats" {
+  import "my/netapp"
+
+  vars.netapp_check = "cifs,stats"
+}
+
+object CheckCommand "my/netapp-cifs-users" {
+  import "my/netapp"
+
+  vars.netapp_check = \
+    "cifs,users,$netapp_cifs_users_warning$,$netapp_cifs_critical$"
+}
+
+object CheckCommand "my/netapp-nvram" {
+  import "my/netapp"
+
+  vars.netapp_check = "nvram"
+}
+
+object CheckCommand "my/netapp-version" {
+  import "my/netapp"
+
+  vars.netapp_check = "version"
+}

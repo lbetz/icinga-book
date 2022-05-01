@@ -1,0 +1,14 @@
+object Host "sagittarius.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+
+  display_name = "sagittarius"
+  address = "172.16.1.14"
+
+  vars.http_vhosts["webproxy"] = {
+    http_vhost = "www.google.de"
+    http_address = "172.16.1.14"
+    http_port = 3128
+    http_uri = "http://www.google.de"
+  }
+}

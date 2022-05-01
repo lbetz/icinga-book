@@ -1,0 +1,13 @@
+object CheckCommand "my/prtdiag" {
+  command = [ PluginContribDir + "/check_prtdiag" ]
+
+  arguments = {
+    "-c" = {
+      value = "$prtdiag_config$"
+      description = "Path to prtdiag config."
+    }
+  }
+
+  vars.cisco_health_community = \
+      "/opt/csw/libexec/nagios-plugins/check_prtdiag.conf"
+}

@@ -1,0 +1,6 @@
+object Service "smtp" {
+  import "generic-service"
+  host_name = "kmw.gwc-jonas.net"
+
+  check_command = "smtp"
+}

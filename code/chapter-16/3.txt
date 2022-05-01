@@ -1,0 +1,48 @@
+object Host "andromeda.gwc-jonas.local" {
+  import "windows-host"
+
+  display_name = "andromeda"
+  address = "172.16.1.20"
+
+  vars.IcingaCheckMemory_Object_WarningPercent = "100"
+  vars.IcingaCheckMemory_Object_CriticalPercent = "100"
+  vars.IcingaCheckMemory_String_Warning = "1700MB"
+  vars.IcingaCheckMemory_String_Critical = "1850MB"
+
+  vars.disks["dick C"] = false
+  vars.disks["disk D"] = {
+    IcingaCheckUsedPartitionSpace_Array_Include = [ "D" ]
+  }
+
+  vars.ldap_bind = "monitor@gwc-jonas.local"
+  vars.ldap_pass = "changeme"
+  vars.ldap_starttls = true
+
+  vars.ldap["ldap"] = {
+    ldap_base = "dc=gwc-jonas,dc=local"
+  }
+  vars.ldap["ldap mail"] = {
+    ldap_base = "dc=gwc-jonas,dc=local"
+    ldap_attr = "(&(objectClass=user)(|(uid=*)(mail=*)))"
+  }
+
+  vars.cifs_disks["CIFS Users"] = {
+    disk_smb_hostname = "ANDROMEDA"
+    disk_smb_share = "Users"
+    disk_smb_username = "monitoring"
+    disk_smb_password = "changeme"
+    disk_smb_wused = 96
+    disk_smb_cused = 98
+  }
+
+  vars.counter["Total Terminal Sessions"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\Terminal Services\\Total Sessions" ]
+    IcingaCheckPerfcounter_Object_Warning = 35
+    IcingaCheckPerfcounter_Object_Critical = 40
+  }
+  vars.counter["Inactive Terminal Sessions"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\Terminal Services\\Inactive Sessions" ]
+    IcingaCheckPerfcounter_Object_Warning = 10
+  }
+}
+

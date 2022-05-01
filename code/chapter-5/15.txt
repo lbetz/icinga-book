@@ -1,0 +1,11 @@
+[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11';
+$ProgressPreference = 'SilentlyContinue';
+$ScriptFile = 'C:\Users\Administrator\IcingaForWindows.ps1';
+
+Invoke-WebRequest `
+    -UseBasicParsing `
+    -Uri 'https://packages.icinga.com/IcingaForWindows/IcingaForWindows.ps1' `
+    -OutFile $ScriptFile;
+
+& $ScriptFile `
+    -SkipWizard;

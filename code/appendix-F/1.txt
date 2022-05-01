@@ -1,0 +1,22 @@
+template CheckCommand "my/ps-local" {
+  command = [
+    "$ps_command$",
+    "-command",
+    "& '$ps_script_path$\\$ps_script$'"
+  ]
+
+  arguments = {
+    "-args" = {
+      value = "$ps_arguments$"
+      repeat_key = true
+      skip_key = true
+    }
+    ";exit" = {
+      order = 99
+      value = "$$LASTEXITCODE"
+    }
+  }
+
+  vars.ps_command = "C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  vars.ps_script_path = "C:\\Program Files\\ICINGA2\\sbin"
+}

@@ -1,0 +1,30 @@
+object Host "antlia.gwc-jonas.net" {
+  import "linux-host"
+
+  display_name = "antlia"
+  address = "172.16.2.12"
+
+  vars.osfamily = "Debian"
+
+  vars.http_vhosts["Website"] = {
+    http_vhost = "www.gwc-jonas.net"
+  }
+
+  vars.http_vhosts["Online Shop"] = {
+    http_vhost = "shop.gwc-jonas.net"
+    http_ssl = true
+  }
+
+  vars.disks["disk /tmp"] = {
+    disk_partitions = "/tmp"
+    disk_wfree = "30%"
+    disk_cfree = "15%"
+  }
+
+  vars.procs_warning = 150
+  vars.procs_critical = 250
+  vars.procs["apache2"] = {
+    procs_warning = "4:8"
+    procs_critical = "1:10"
+  }
+}

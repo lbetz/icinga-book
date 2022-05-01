@@ -1,0 +1,7 @@
+object CheckCommand "by_ssh_prtdiag" {
+  import "my/prtdiag"
+  vars.by_ssh_arguments = arguments
+  arguments = null
+  vars.by_ssh_command = "$by_ssh_plugindir$/check_prtdiag"
+  import "by_ssh_base"
+}

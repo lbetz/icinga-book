@@ -1,0 +1,8 @@
+apply Service "netapp cluster" {
+  import "generic-service"
+
+  check_command = "my/cdot-clusterlinks"
+
+  assign where host.vars.netapp_cluster
+  ignore where host.vars.netapp_community
+}

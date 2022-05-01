@@ -1,0 +1,14 @@
+{
+  "icinga2": {
+    "api": {
+      "host": "localhost",
+      "port": 5665,
+      "user": "dashing",
+      "password": "changeme"
+    }
+  },
+  "icingaweb2": {
+    "url": "http://fornax.gwc-jonas.local/icingaweb2"
+  }
+}
+

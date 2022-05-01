@@ -1,0 +1,45 @@
+object Host "aquarius.gwc-jonas.local" {
+  import "linux-host"
+  import "lan-net"
+  import "postgres-dbms"
+
+  address = "172.16.1.16"
+  display_name = "aquarius"
+
+  vars.mysql["db icinga"] = {
+    mysql_hostname = "172.16.1.11"
+    mysql_username = "reporting"
+    mysql_password = "changeme"
+    mysql_database = "icinga2"
+  }
+
+  vars.postgres["pgsql config"] += {
+    postgres_warning = "1832be994cb93f5dbf824d30e6671009"
+  }
+
+  vars.postgres["db shop"] = {
+    postgres_action = "database_size"
+    postgres_include = "shop"
+    postgres_warning = "50M"
+    postgres_critical = "80M"
+  }
+
+  vars.jmx4perl_url = "http://" + address + ":8080/jolokia"
+  vars.jmx4perl_product = "tomcat"
+
+  vars.jmx["AS Heap usage"] = {
+    jmx4perl_alias = "MEMORY_HEAP_USED"
+    jmx4perl_base = "MEMORY_HEAP_MAX"
+    jmx4perl_name = "HeapMemory"
+    jmx4perl_label = "Heap-Memory: %.2r% used (%.2v %u / %.2b %u)"
+    jmx4perl_unit = "B"
+    jmx4perl_warning = 80
+    jmx4perl_critical = 90
+  }
+
+  vars.jmx["AS shop app"] = {
+    jmx4perl_mbean = "Catalina:context=/jolokia,host=localhost,type=Loader"
+    jmx4perl_attribute = "stateName"
+    jmx4perl_name = "shop"
+  }
+}

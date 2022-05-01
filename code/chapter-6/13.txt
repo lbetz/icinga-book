@@ -1,0 +1,13 @@
+template CheckCommand "by_ssh_base" {
+  import "by_ssh"
+
+  vars.by_ssh_plugindir = PluginDir
+}
+
+object CheckCommand "by_ssh_disk" {
+  import "disk"
+  vars.by_ssh_arguments = arguments
+  arguments = null
+  vars.by_ssh_command = "$by_ssh_plugindir$/check_disk"
+  import "by_ssh_base"
+}

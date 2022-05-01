@@ -1,0 +1,74 @@
+template Host "exchange-cas" {
+  import "exchange-transport"
+  import "exchange-um"
+
+  vars.services["Exchange CAS Services"] = {
+    IcingaCheckService_Array_Service = [
+        "MSExchangeMailboxReplication",
+        "MSExchangeFrontEndTransport",
+        "MSExchangeIMAP4",
+        "MSExchangeRPC" ]
+  }
+
+  vars.http_vhosts["Exchange Control Panel"] = {
+    http_uri = "/ecp/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.http_vhosts["Exchange Web Service"] = {
+    http_uri = "/ews/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.http_vhosts["Outlook Web App"] = {
+    http_uri = "/owa/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.http_vhosts["Exchange RPC"] = {
+    http_uri = "/rpc/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.http_vhosts["Offline Address Book"] = {
+    http_uri = "/OAB/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.http_vhosts["Exchnage ActiveSync"] = {
+    http_uri = "/Microsoft-Server-ActiveSync/healthcheck.htm"
+    http_ssl = true
+    http_string = "200 OK<br/>"
+  }
+
+  vars.counter["CAS RPC Averaged Latency"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\RPC Averaged Latency" ]
+    IcingaCheckPerfcounter_Object_Critical = 250
+  }
+
+  vars.counter["CAS RPC Requests"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\RPC Requests" ]
+    IcingaCheckPerfcounter_Object_Critical = 40
+  }
+
+  vars.counter["CAS Active User Count"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\Active User Count" ]
+  }
+
+  vars.counter["CAS Connection Count"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\Connection Count" ]
+  }
+
+  vars.counter["CAS RPC Operations"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\RPC Operations/sec" ]
+  }
+
+  vars.counter["CAS RPC User Count"] = {
+    IcingaCheckPerfcounter_Array_PerfCounter = [ "\\MSExchange RpcClientAccess\\User Count" ]
+  }
+}

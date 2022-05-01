@@ -1,0 +1,20 @@
+object Service "smtp tcp/587" {
+  import "generic-service"
+  host_name = "gmw.gwc-jonas.local"
+
+  check_command = "smtp"
+
+  vars.smtp_port = "587"
+  vars.smtp_starttls = true
+}
+
+object Service "smtp tcp/587 cert" {
+  import "generic-service"
+  host_name = "gmw.gwc-jonas.local"
+
+  check_command = "smtp"
+
+  vars.smtp_port = "587"
+  vars.smtp_starttls = true
+  vars.smtp_certificate_age = 10
+}

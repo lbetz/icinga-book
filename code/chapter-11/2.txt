@@ -1,0 +1,13 @@
+object ApiUser "icingaweb2" {
+  password = "CHANGEME"
+  permissions = [
+    "status/query",
+    "actions/*",
+    "objects/modify/*",
+    "objects/query/*"
+  ]
+}
+object ApiUser "director" {
+  password = "CHANGEME"
+  permissions = [ "*" ]
+}

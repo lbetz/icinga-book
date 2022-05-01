@@ -1,0 +1,6 @@
+object PerfdataWriter "pnp" {
+  host_perfdata_path = "/var/spool/icinga2/perfdata/host-perfdata"
+  service_perfdata_path = "/var/spool/icinga2/perfdata/service-perfdata"
+
+  rotation_interval = 30s
+}

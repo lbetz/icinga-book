@@ -1,0 +1,2 @@
+MAILTO=""
+* * * * * root /usr/sbin/csync2 -x

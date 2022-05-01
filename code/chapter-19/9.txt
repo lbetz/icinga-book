@@ -1,0 +1,15 @@
+template Host "puppet-agent" {
+  vars.puppet_warning = 2200
+  vars.puppet_critical = 4400
+}
+
+apply Service "puppet" {
+  import "generic-service"
+
+  check_command = "my/puppet"
+  command_endpoint = host.name
+
+  assign where "puppet-agent" in host.templates
+  ignore where host.vars.os != "Linux"
+  ignore where host.vars.noagent
+}

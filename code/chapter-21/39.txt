@@ -1,0 +1,5 @@
+object Influxdb2Writer "influxdb2" {
+  organization = "GWC-Jonas"
+  bucket = "icinga2"
+  auth_token = "CHANGEME"
+}

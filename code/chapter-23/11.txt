@@ -1,0 +1,5 @@
+[Syslog]
+instance = "elasticsearch"
+index = "logstash*"
+filter = "agent.hostname={host.name}"
+fields = "message"

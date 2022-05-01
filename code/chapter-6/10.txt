@@ -1,0 +1,12 @@
+apply Service "process " for (proc => config in host.vars.procs) {
+  import "generic-service"
+
+  check_command = "procs"
+  command_endpoint = host.name
+
+  vars.procs_command = proc
+  vars += config
+
+  assign where get_object("Endpoint", host.name) && host.vars.os == "Linux"
+  ignore where typeof(config) != Dictionary
+}

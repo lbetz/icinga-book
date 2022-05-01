@@ -1,0 +1,16 @@
+group icinga {
+  host fornax.gwc-jonas.local virgo.gwc-jonas.local;
+  key /etc/csync2.key_icinga;
+ 
+  include /etc/csync2.cfg;
+
+  include /etc/icingaweb2/modules;
+  exclude /etc/icingaweb2/modules/director;
+  include /etc/icingaweb2/*.ini;
+  include /etc/icingaweb2/enabledModules;
+  exclude /etc/icingaweb2/enabledModules/director;
+  include /etc/icingaweb2/dashboards;
+  include /etc/icingaweb2/preferences;
+ 
+  auto younger;
+}
