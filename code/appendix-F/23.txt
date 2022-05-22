@@ -1,0 +1,13 @@
+object CheckCommand "my/cdot-global" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_global.pl" ]
+
+  arguments += {
+    "--plugin" = {
+      value = "$cdot_global_plugin$"
+    }
+  }
+
+  vars.cdot_global_plugin = "health"
+}

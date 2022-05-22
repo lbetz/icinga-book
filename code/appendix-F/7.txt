@@ -1,7 +1,30 @@
-template Host "exchange-um" {
-  vars.services["Exchange UM Services"] = {
-    IcingaCheckService_Array_Service = [
-        "MSExchangeUM",
-        "MSExchangeUMCR" ]
+object CheckCommand "my/puppet" {
+
+  command = [ "sudo", PluginContribDir + "/check_puppet.rb" ]
+  arguments = {
+    "-c" = {
+      value = "$puppet_critical$"
+      required = true
+    }
+    "-w" = {
+      value = "$puppet_warning$"
+      required = true
+    "-f" = {
+      set_if = "$puppet_check_failures$"
+    }
+    "--only-enabled" = {
+      set_if = "$puppet_only_enabled$"
+    }
+    "--state-dir" = "$puppet_state_dir$"
+    "--agent-lock-file" = "$puppet_lock_file$"
+    "--agent-disabled-lock-file" = "$puppet_disabled_lock_file$"
+    "--state-file" = "$puppet_state_file$"
+    "--summary-file" = "$puppet_summary_file$"
+    "--disable-perfdata" = {
+      set_if = "$puppet_disable_perfdata$"
+    }
   }
+
+  vars.puppet_check_failures = false
+  vars.puppet_only_enabled = true
 }

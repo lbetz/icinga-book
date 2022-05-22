@@ -1,33 +1,6 @@
-object CheckCommand "my/pgactivity" {
- import "ipv4-or-ipv6"
+template Host "solaris-host" {
+  vars.os = "Solaris"
 
- command = [ PluginContribDir + "/check_pgactivity" ]
-
- arguments = {
-   "-h" = "$pgactivity_address$"
-   "-s" = {
-     value = "$pgactivity_service$"
-     required = true
-   }
-   "-U" = "$pgactivity_username$"
-   "-p" = "$pgactivity_port$"
-   "-d" = "$pgactivity_database$"
-   "--dbexclude" = "$pgactivity_dbexclude$"
-   "--dbinclude" = "$pgactivity_dbinclude$"
-   "-w" = "$pgactivity_warning$"
-   "-c" = "$pgactivity_critical$"
-   "--format" = "$pgactivity_format$"
-   "--tmpdir" = "$pgactivity_tempdir$"
-   "--psql" = "$pgactivity_psql$"
-   "--status-file" = "$pgactivity_status_file$"
-   "--timeout" = "$pgactivity_timeout$"
-   "--query" = "$pgactivity_query$"
- }
-
- env = {
-   "PGPASSWORD" = "$pgactivity_password$"
-   "PGDATABASE" = "postgres"
- }
-
- vars.pgactivity_address = "$check_address$"
+  vars.by_ssh_logname = "icinga"
+  vars.by_ssh_plugindir = "/opt/csw/libexec/nagios-plugins"
 }

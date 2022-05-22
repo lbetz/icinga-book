@@ -1,6 +1,11 @@
-template Host "solaris-host" {
-  vars.os = "Solaris"
-
-  vars.by_ssh_logname = "icinga"
-  vars.by_ssh_plugindir = "/opt/csw/libexec/nagios-plugins"
+object CheckCommand "my/thola-interface-metrics" {
+    import "my/generic-thola-device-check-command"
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "interface-metrics"
+        }
+    }
 }

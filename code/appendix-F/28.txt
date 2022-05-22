@@ -1,0 +1,18 @@
+object CheckCommand "my/cdot-lun" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_lun.pl" ]
+
+  arguments += {
+    "--volume" = "$cdot_lun_volume$"
+    "--size-warning" = "$cdot_lun_size_warning$"
+    "--size-critical" = "$cdot_lun_size_critical$"
+    "--vserver" = "$cdot_lun_vserver$"
+    "--perf" = {
+      set_if = "$cdot_lun_perfdata$"
+    }
+  }
+
+  vars.cdot_lun_size_warning = 80
+  vars.cdot_lun_size_critical = 90
+}

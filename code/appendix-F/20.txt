@@ -1,0 +1,35 @@
+object CheckCommand "my/thola-identify" {
+    import "my/generic-thola-device-check-command"
+    
+    arguments += { 
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "identify"
+        }   
+        "--model" = {
+            required = false
+            value = "$thola_model$"
+        }   
+        "--os-version" = {
+            required = false
+            value = "$thola_os_version$"
+        }   
+        "--vendor" = { 
+            required = false
+            value = "$thola_vendor$"
+        }   
+        "--serial-number" = {
+            required = false
+            value = "$thola_serial_number$"
+        }   
+        "--snmp-discover-retries" = {
+            required = false
+            value = "$thola_discover_retries$"
+        }   
+        "--snmp-discover-timeout" = {
+            required = false
+            value = "$thola_discover_timeouts$"
+        }   
+    }       
+}

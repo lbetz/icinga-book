@@ -1,0 +1,96 @@
+template CheckCommand "my/netapp" {
+  import "ipv4-or-ipv6"
+
+  command = [ PluginContribDir + "/check_naf.py", "$netapp_check$" ]
+
+  arguments = {
+    "-H" = "$netapp_address$"
+    "-C" = {
+      value = "$netapp_community$"
+      required = true
+    }
+  }
+  vars.netapp_address = "$check_address$"
+}
+
+object CheckCommand "my/netapp-status" {
+  import "my/netapp"
+
+  vars.netapp_check = "global"
+}
+
+object CheckCommand "my/netapp-cpu" {
+  import "my/netapp"
+
+  vars.netapp_check = "cpu,$netapp_target$,$netapp_cpu_warning$,$netapp_cpu_critical$"
+}
+
+object CheckCommand "my/netapp-cluster" {
+  import "my/netapp"
+
+  vars.netapp_check = "cluster"
+}
+
+object CheckCommand "my/netapp-cifs-stats" {
+  import "my/netapp"
+
+  vars.netapp_check = "cifs,stats"
+}
+
+object CheckCommand "my/netapp-cifs-users" {
+  import "my/netapp"
+
+  vars.netapp_check = "cifs,users,$netapp_cifs_users_warning$,$netapp_cifs_critical$"
+}
+
+object CheckCommand "my/netapp-disk-failed" {
+  import "my/netapp"
+
+  vars.netapp_check = "disk,failed,$netapp_disk_failed_warning$,$netapp_disk_failed_critical$"
+}
+
+object CheckCommand "my/netapp-disk-spare" {
+  import "my/netapp"
+
+  vars.netapp_check = "disk,spare,$netapp_disk_spare_warning$,$netapp_disk_spare_critical$"
+}
+
+object CheckCommand "my/netapp-volume-data" {
+  import "my/netapp"
+
+  vars.netapp_check = "vol_data,$netapp_volume_data_target$,$netapp_volume_data_warning$,$netapp_volume_data_critical$"
+  vars.netapp_volume_data_target = "ALL"
+}
+
+object CheckCommand "my/netapp-volume-snapshot" {
+  import "my/netapp"
+
+  vars.netapp_check = "vol_snap,$netapp_volume_snapshot_target$,$netapp_volume_snapshot_warning$,$netapp_volume_snapshot_critical$"
+  vars.netapp_volume_snapshot_target = "ALL"
+}
+
+object CheckCommand "my/netapp-volume-files" {
+  import "my/netapp"
+
+  vars.netapp_check = "vol_files,$netapp_volume_files_target$,$netapp_volume_files_warning$,$netapp_volume_files_critical$"
+  vars.netapp_volume_files_target = "ALL"
+}
+
+object CheckCommand "my/netapp-volume-inode" {
+  import "my/netapp"
+
+  vars.netapp_check = "vol_inode,$netapp_volume_inode_target$,$netapp_volume_inode_warning$,$netapp_volume_inode_critical$"
+  vars.netapp_volume_inode_target = "ALL"
+}
+
+object CheckCommand "my/netapp-nvram" {
+  import "my/netapp"
+
+  vars.netapp_check = "nvram"
+}
+
+object CheckCommand "my/netapp-version" {
+  import "my/netapp"
+
+  vars.netapp_check = "version"
+}

@@ -1,0 +1,15 @@
+object CheckCommand "my/cdot-snapshots" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_snapshots.pl" ]
+
+  arguments += {
+    "--age" = "$cdot_snapshots_age$"
+    "--volume" = "$cdot_snapshots_volume$"
+    "--numbersnapshot" = "$cdot_snapshots_number$"
+    "--retentiondays" = "$cdot_snapshots_retentiondays$"
+    "--busy" = {
+      set_if = "$cdot_snapshots_busy$"
+    }
+  }
+}

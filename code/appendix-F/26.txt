@@ -1,0 +1,22 @@
+object CheckCommand "my/cdot-volume" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_volume.pl" ]
+
+  arguments += {
+    "--volume" = "$cdot_volume_volume$"
+    "--size-warning" = "$cdot_volume_size_warning$"
+    "--size-critical" = "$cdot_volume_size_critical$"
+    "--inode-warning" = "$cdot_volume_inode_warning$"
+    "--inode-critical" = "$cdot_volume_inode_critical$"
+    "--snap-warning" = "$cdot_volume_snap_warning$"
+    "--snap-critical" = "$cdot_volume_snap_critical$"
+    "--perf" = {
+      set_if = "$cdot_volume_perfdata$"
+    }
+    "--exclude" = "$cdot_volume_exclude$"
+  }
+
+  vars.cdot_volume_size_warning = 80
+  vars.cdot_volume_size_critical = 90
+}

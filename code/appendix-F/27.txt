@@ -1,0 +1,17 @@
+object CheckCommand "my/cdot-snapmirror" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_snapmirror.pl" ]
+
+  arguments += {
+    "--volume" = {
+     value = "$cdot_snapmirror_volume$"
+    }
+    "--vserver" = {
+      value = "$cdot_snapmirror_vserver$"
+    }
+    "--lag" = {
+      value = "$cdot_snapmirror_lag$"
+    }
+  }
+}

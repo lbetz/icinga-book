@@ -1,23 +1,45 @@
-object CheckCommand "cisco_health" {
-  import "ipv4-or-ipv6"
-
-  command = [ PluginContribDir + "/check_cisco_health" ]
-
-  arguments = {
-    "-c" = {
-      value = "$cisco_health_community$"
-      description = "SNMP community to use."
+template CheckCommand "my/generic-thola-check-command" {
+    command = [ PluginContribDir + "/thola-client" ]
+    arguments += {
+        "(no key.0)" = {
+            order = -2
+            required = true
+            skip_key = true
+            value = "check"
+        }
+        "--target-api" = {
+            required = true
+            value = "$thola_api_target$"
+            description = "Target URL  of the thola API"
+        }
     }
-    "-h" = {
-      value = "$cisco_health_address$"
-      description = "Hostname or address to ask."
-    }
-    "-t" = {
-      value = "$cisco_health_timeout$"
-      description = "Sets the SNMP timeout (in ms)."
-    }
-  }
+}
 
-  vars.cisco_health_address = "$check_address$"
-  vars.cisco_health_community = "public"
+template CheckCommand "my/generic-thola-device-check-command" {
+    import "ipv4-or-ipv6"
+    import "my/generic-thola-check-command"
+
+    arguments += {
+        "(no key.1)" = {
+            order = 0
+            required = true
+            skip_key = true
+            value = "$thola_address$"
+            description = "Thola Check Device Mode"
+        }
+        "--snmp-community" = {
+            required = false
+            value = "$thola_snmp_community$"
+            description = "SNMP Community of target"
+        }
+        "--snmp-version" = {
+            required = false
+            value = "$thola_snmp_protocol$"
+            description = "SNMP Version of target"
+        }
+    }
+
+    vars.thola_address = "$check_address$"
+    vars.thola_snmp_community = "$snmp_community$"
+    vars.thola_snmp_version = "v2c"
 }

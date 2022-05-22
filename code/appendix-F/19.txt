@@ -1,16 +1,12 @@
-object CheckCommand "my/puppetdb" {
+object CheckCommand "my/thola-thola-server" {
+    import "my/generic-thola-device-check-command"
 
-  command = [ PluginContribDir + "/check_puppetdb.rb" ]
-
-  arguments = {
-    "--host" = "$puppetdb_address$"
-    "--port" = "$puppetdb_port$"
-    "--sslport" = "$puppetdb_sslport$"
-    "--timeout" = "$puppetdb_timeout$"
-    "--queuewarn" = "$puppetdb_queue_warning$"
-    "--queuecrit" = "$puppetdb_queue_critical$"
-    "--cmd_p_secwarn" = "$puppetdb_cmd_warning$"
-    "--cmd_p_seccrit" = "$puppetdb_cmd_critical$"
-  }
-  vars.puppetdb_address = "127.0.0.1"
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "thola-server"
+        }
+    }
 }

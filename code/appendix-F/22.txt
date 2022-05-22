@@ -1,0 +1,19 @@
+template CheckCommand "my/cdot" {
+  import "ipv4-or-ipv6"
+
+  arguments = {
+    "--hostname" = {
+      value = "$cdot_address$"
+    }
+    "--username" = {
+      value = "$cdot_username$"
+      required = true
+    }
+    "--password" = {
+      value = "$cdot_password$"
+      required = true
+    }
+  }
+
+  vars.cdot_address = "$check_address$"
+}

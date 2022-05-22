@@ -1,0 +1,92 @@
+object CheckCommand "my/thola-ups" {
+    import "my/generic-thola-device-check-command"
+
+    arguments += {
+        "(no key)" = {
+            order = -1
+            required = true
+            skip_key = true
+            value = "ups"
+        }
+        "--batt-current-critical-max" = {
+            required = false
+            value = "$thola_batt_current_critical_max$"
+        }
+        "--batt-current-critical-min" = {
+            required = false
+            value = "$thola_batt_current_critical_min$"
+        }
+        "--batt-current-warning-max" = {
+            required = false
+            value = "$thola_batt_current_warning_max$"
+        }
+        "--batt-current-warning-min" = {
+            required = false
+            value = "$thola_batt_current_warning_min$"
+        }
+        "--batt-temperature-critical-max" = {
+            required = false
+            value = "$thola_batt_temperature_critical_max$"
+        }
+        "--batt-temperature-critical-min" = {
+            required = false
+            value = "$thola_batt_temperature_critical_min$"
+        }
+        "--batt-temperature-warning-max" = {
+            required = false
+            value = "$thola_batt_temperature_warning_max$"
+        }
+        "--batt-temperature-warning-min" = {
+            required = false
+            value = "$thola_batt_temperature_warning_min$"
+        }
+        "--current-load-critical-max" = {
+            required = false
+            value = "$thola_current_load_critical_max$"
+        }
+        "--current-load-critical-min" = {
+            required = false
+            value = "$thola_current_load_critical_min$"
+        }
+        "--current-load-warning-max" = {
+            required = false
+            value = "$thola_current_load_warning_max$"
+        }
+        "--current-load-warning-min" = {
+            required = false
+            value = "$thola_current_load_warning_min$"
+        }
+        "--rectifier-current-critical-max" = {
+            required = false
+            value = "$thola_rectifier_current_critical_max$"
+        }
+        "--rectifier-current-critical-min" = {
+            required = false
+            value = "$thola_rectifier_current_critical_min$"
+        }
+        "--rectifier-current-warning-max" = {
+            required = false
+            value = "$thola_rectifier_current_warning_max$"
+        }
+        "--rectifier-current-warning-min" = {
+            required = false
+            value = "$thola_rectifier_current_warning_min$"
+        }
+        "--system-voltage-critical-max" = {
+            required = false
+            value = "$thola_system_voltage_critical_max$"
+        }
+        "--system-voltage-critical-min" = {
+            required = false
+            value = "$thola_system_voltage_critical_min$"
+        }
+        "--system-voltage-warning-max" = {
+            required = false
+            value = "$thola_system_voltage_warning_max$"
+        }
+        "--system-voltage-warning-min" = {
+            required = false
+            value = "$thola_system_voltage_warning_min$"
+        }
+    }
+}

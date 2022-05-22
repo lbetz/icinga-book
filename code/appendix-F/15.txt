@@ -1,13 +1,10 @@
-object CheckCommand "my/prtdiag" {
-  command = [ PluginContribDir + "/check_prtdiag" ]
-
-  arguments = {
-    "-c" = {
-      value = "$prtdiag_config$"
-      description = "Path to prtdiag config."
+object CheckCommand "my/thola-hardware-health" {
+    import "my/generic-thola-device-check-command"
+    arguments += {
+        "(no key)" = {
+            order = -1
+            skip_key = true
+            value = "hardware-health"
+        }
     }
-  }
-
-  vars.cisco_health_community = \
-      "/opt/csw/libexec/nagios-plugins/check_prtdiag.conf"
 }

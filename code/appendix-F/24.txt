@@ -1,0 +1,5 @@
+object CheckCommand "my/cdot-clusterlinks" {
+  import "my/cdot"
+
+  command = [ PluginContribDir + "/check_cdot_clusterlinks.pl" ]
+}
