@@ -1,0 +1,37 @@
+--- a/lib/VMware/share/VMware/VICommon.pm
++++ b/lib/VMware/share/VMware/VICommon.pm
+@@ -16,6 +16,7 @@
+ }
+ use LWP::UserAgent;
+ use LWP::ConnCache;
++use IO::Socket::SSL;
+ use HTTP::Request;
+ use HTTP::Headers;
+ use HTTP::Response;
+@@ -616,6 +617,8 @@
+       $xmlurl = $xmlurl . '/sdk/vimServiceVersions.xml';
+ 
+       my $user_agent = LWP::UserAgent->new(agent => "VI Perl");
++      $user_agent->ssl_opts(verify_hostname => 0, SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE);
++
+       my $cookie_jar = HTTP::Cookies->new(ignore_discard => 1);
+       $user_agent->cookie_jar($cookie_jar);
+       $user_agent->protocols_allowed(['http', 'https']);
+@@ -698,6 +701,8 @@
+       }
+ 
+       my $user_agent = LWP::UserAgent->new(agent => "VI Perl");
++      $user_agent->ssl_opts(verify_hostname => 0, SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE);
++
+       my $cookie_jar = HTTP::Cookies->new(ignore_discard => 1);
+       $user_agent->cookie_jar($cookie_jar);
+       $user_agent->protocols_allowed(['http', 'https']);
+@@ -2301,6 +2306,8 @@
+ sub new {
+    my ($class, $url) = @_;
+    my $user_agent = LWP::UserAgent->new(agent => "VI Perl");
++   $user_agent->ssl_opts(verify_hostname => 0, SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE);
++
+    my $cookie_jar = HTTP::Cookies->new(ignore_discard => 1);
+    $user_agent->cookie_jar( $cookie_jar );
+    $user_agent->protocols_allowed( ['http', 'https'] );
